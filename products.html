@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saydear Products | Modern Storage & Organization Systems</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            background-color: #FAFAFA;
+        }
+        /* 增加平滑的渐变淡入动画，让卡片筛选切换时不生硬 */
+        .product-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .product-card.hidden {
+            opacity: 0;
+            transform: scale(0.95);
+            pointer-events: none;
+            position: absolute;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+    </style>
+</head>
+<body class="text-slate-900 antialiased min-h-screen flex flex-col">
+
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="text-2xl font-extrabold tracking-tight text-emerald-950">
+                        Saydear<span class="text-emerald-600">.</span>
+                    </a>
+                </div>
+
+                <nav class="hidden md:flex space-x-8 text-sm font-medium tracking-wide">
+                    <a href="index.html" class="text-slate-500 hover:text-emerald-950 transition-colors duration-200">Home</a>
+                    <a href="products.html" class="text-emerald-600 border-b-2 border-emerald-600 pb-1">Products</a>
+                    <a href="community.html" class="text-slate-500 hover:text-emerald-950 transition-colors duration-200">Community</a>
+                    <a href="#faq" class="text-slate-500 hover:text-emerald-950 transition-colors duration-200">FAQ</a>
+                    <a href="warranty.html" class="text-slate-500 hover:text-emerald-950 transition-colors duration-200">Support & Warranty</a>
+                </nav>
+
+                <div class="hidden md:flex items-center">
+                    <a href="https://www.amazon.com/stores/Saydear/page/A23476AC-341C-42B8-9F1D-443835DB5297" target="_blank" rel="noopener noreferrer" 
+                       class="inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-sm font-semibold rounded-full text-white bg-emerald-950 hover:bg-emerald-800 transition-all duration-200 shadow-xs">
+                        Shop on Amazon
+                        <i data-lucide="external-link" class="w-4 h-4 ml-1.5 opacity-80"></i>
+                    </a>
+                </div>
+
+                <div class="md:hidden">
+                    <button type="button" id="mobile-menu-btn" class="p-2 rounded-md text-slate-500 hover:text-emerald-950 focus:outline-none">
+                        <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+                        <i data-lucide="x" id="close-icon" class="w-6 h-6 hidden"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="hidden md:hidden bg-white border-b border-slate-100" id="mobile-menu">
+            <div class="px-4 pt-3 pb-6 space-y-3 sm:px-3 text-base font-medium">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-slate-600 hover:bg-slate-50 hover:text-emerald-950">Home</a>
+                <a href="products.html" class="block px-3 py-2 rounded-md bg-emerald-50 text-emerald-700">Products</a>
+                <a href="community.html" class="block px-3 py-2 rounded-md text-slate-600 hover:bg-slate-50 hover:text-emerald-950">Community</a>
+                <a href="#faq" class="block px-3 py-2 rounded-md text-slate-600 hover:bg-slate-50 hover:text-emerald-950">FAQ</a>
+                <a href="warranty.html" class="block px-3 py-2 rounded-md text-slate-600 hover:bg-slate-50 hover:text-emerald-950">Support & Warranty</a>
+                <div class="pt-4 px-3">
+                    <a href="https://www.amazon.com" target="_blank" rel="noopener noreferrer" 
+                       class="w-full inline-flex items-center justify-center px-4 py-3 border border-transparent rounded-full text-white bg-emerald-950 font-semibold shadow-xs text-center">
+                        Shop on Amazon
+                        <i data-lucide="external-link" class="w-4 h-4 ml-1.5 opacity-80"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+
+        <section class="py-12 bg-white border-b border-slate-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-950 tracking-tight mb-3">
+                    Explore Saydear Systems
+                </h1>
+                <p class="text-sm text-slate-500 max-w-xl mx-auto leading-relaxed">
+                    Meticulously engineered products tailored to transform messy countertops and cluttered cabinets into streamlined, high-functioning minimalist zones.
+                </p>
+            </div>
+        </section>
+
+        <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="flex justify-center space-x-3 mb-12">
+                <button data-filter="all" class="filter-btn px-5 py-2 text-xs font-bold rounded-full bg-emerald-950 text-white shadow-2xs transition-all duration-200">
+                    All Storage
+                </button>
+                <button data-filter="kitchen" class="filter-btn px-5 py-2 text-xs font-medium rounded-full bg-white text-slate-600 hover:bg-slate-50 border border-slate-200/60 transition-all duration-200">
+                    Kitchen
+                </button>
+                <button data-filter="bathroom" class="filter-btn px-5 py-2 text-xs font-medium rounded-full bg-white text-slate-600 hover:bg-slate-50 border border-slate-200/60 transition-all duration-200">
+                    Bathroom
+                </button>
+                <button data-filter="Jewelry Organizer" class="filter-btn px-5 py-2 text-xs font-medium rounded-full bg-white text-slate-600 hover:bg-slate-50 border border-slate-200/60 transition-all duration-200">
+                    Jewelry Organizer
+                </button>
+            </div>
+
+            <div id="product-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-300">
+                
+                <div data-category="kitchen" class="product-card bg-white rounded-2xl border border-slate-100 hover:border-slate-200 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col overflow-hidden group">
+                    <div class="aspect-square bg-white relative flex items-center justify-center p-6 border-b border-slate-100 overflow-hidden">
+                        <img id="product-1-img" 
+                             src="images/US001/black.jpg" 
+                             alt="Heavy-Duty 2-Tier Sliding Under-Sink Organizer" 
+                             class="max-h-full max-w-full object-contain group-hover:scale-102 transition-transform duration-300">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+                                Color: <span id="product-1-color-text" class="text-slate-600 font-semibold">black</span>
+                            </span>
+                            <div class="flex space-x-1.5">
+                                <button class="w-3.5 h-3.5 rounded-full bg-slate-900 border border-transparent ring-2 ring-offset-1 ring-emerald-600 cursor-pointer transition-all focus:outline-non"
+                                        onclick="switchColor('product-1', 'images/US001/black.jpg', 'Black', this)">
+                                </button>
+                                <button class="w-3.5 h-3.5 rounded-full bg-white border border-slate-300 ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-1', 'images/US001/white.jpg', 'White', this)">
+                                </button>
+                                <button class="w-3.5 h-3.5 rounded-full bg-amber-400 border border-transparent ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-1', 'images/US001/gold.jpg', 'Gold', this)">
+                                </button>
+                                <button class="w-3.5 h-3.5 rounded-full bg-slate-400 border border-transparent ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-1', 'images/US001/grey.jpg', 'Grey', this)">
+                                </button>
+                                <button class="w-3.5 h-3.5 rounded-full bg-[#62a9c4] border border-transparent ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-1', 'images/US001/blue.jpg', 'Blue', this)">
+                                </button>
+                            </div>
+                        </div>
+
+                        <span class="text-[10px] uppercase font-bold text-emerald-700 tracking-wider mb-1">Under Sink Storage</span>
+                        <h2 class="text-base font-bold text-slate-950 group-hover:text-emerald-800 transition-colors mb-2 leading-snug">
+                            Heavy-Duty 2-Tier Sliding Under-Sink Organizer
+                        </h2>
+                        <p class="text-xs text-slate-400 mb-6 leading-relaxed line-clamp-3">
+                            Smooth pull-out drawer mechanism allows instant access to hard-to-reach items. Perfect for kitchen cabinets, bathrooms, and laundry rooms.
+                        </p>
+                        <div class="mt-auto">
+                            <a href="https://www.amazon.com/dp/B0D16VD6GT" target="_blank" rel="noopener noreferrer"
+                               class="w-full inline-flex items-center justify-center px-4 py-2.5 border border-transparent text-xs font-bold rounded-full text-white bg-emerald-950 hover:bg-emerald-800 transition-colors shadow-2xs">
+                                 Buy on Amazon
+                                 <i data-lucide="external-link" class="w-3.5 h-3.5 ml-1.5 opacity-80"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-category="kitchen" class="product-card bg-white rounded-2xl border border-slate-100 hover:border-slate-200 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col overflow-hidden group">
+                    <div class="aspect-square bg-white relative flex items-center justify-center p-6 border-b border-slate-100 overflow-hidden">
+                        <img id="product-2-img" 
+                             src="images/US002V/gold.jpg" 
+                             alt="Under Sink Organizer, 2-Tier Premium Metal Pull-Out Racks" 
+                             class="max-h-full max-w-full object-contain group-hover:scale-102 transition-transform duration-300">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+                                Color: <span id="product-2-color-text" class="text-slate-600 font-semibold">gold</span>
+                            </span>
+                            <div class="flex space-x-1.5">
+                                <button class="w-3.5 h-3.5 rounded-full bg-slate-900 border border-transparent ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-2', 'images/US002V/black.jpg', 'Matte Black', this)">
+                                </button>
+                                <button class="w-3.5 h-3.5 rounded-full bg-white border border-slate-300 ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-2', 'images/US002V/white.jpg', 'White', this)">
+                                </button>
+                                <button class="w-3.5 h-3.5 rounded-full bg-amber-400 border border-transparent ring-2 ring-offset-1 ring-emerald-600 cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-2', 'images/US002V/gold.jpg', 'Gold', this)">
+                                </button>
+                                <button class="w-3.5 h-3.5 rounded-full bg-slate-400 border border-transparent ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-2', 'images/US002V/grey.jpg', 'Grey', this)">
+                                </button>
+                            </div>
+                        </div>
+
+                        <span class="text-[10px] uppercase font-bold text-emerald-700 tracking-wider mb-1">Under Sink Storage</span>
+                        <h2 class="text-base font-bold text-slate-950 group-hover:text-emerald-800 transition-colors mb-2 leading-snug">
+                            Under Sink Organizer, 2-Tier Premium Metal Pull-Out Racks
+                        </h2>
+                        <p class="text-xs text-slate-400 mb-6 leading-relaxed line-clamp-3">
+                            Premium rust-resistant coated wire shelves with high-load traceless adhesive hooks. Damage-free organization for modern luxury tiles.
+                        </p>
+                        <div class="mt-auto">
+                            <a href="https://www.amazon.com/dp/B0FHD8BGP3?th=1" target="_blank" rel="noopener noreferrer"
+                               class="w-full inline-flex items-center justify-center px-4 py-2.5 border border-transparent text-xs font-bold rounded-full text-white bg-emerald-950 hover:bg-emerald-800 transition-colors shadow-2xs">
+                                 Buy on Amazon
+                                 <i data-lucide="external-link" class="w-3.5 h-3.5 ml-1.5 opacity-80"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-category="kitchen" class="product-card bg-white rounded-2xl border border-slate-100 hover:border-slate-200 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col overflow-hidden group">
+                    <div class="aspect-square bg-white relative flex items-center justify-center p-6 border-b border-slate-100 overflow-hidden">
+                        <img id="product-3-img" 
+                             src="images/SKC/black.jpg" 
+                             alt="Multifunctional Countertop Sink Organizer" 
+                             class="max-h-full max-w-full object-contain group-hover:scale-102 transition-transform duration-300">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+                                Color: <span id="product-3-color-text" class="text-slate-600 font-semibold">black</span>
+                            </span>
+                            <div class="flex space-x-1.5">
+                                <button class="w-3.5 h-3.5 rounded-full bg-slate-900 border border-transparent ring-2 ring-offset-1 ring-emerald-600 cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-3', 'images/SKC/black.jpg', 'black', this)">
+                                </button>
+                                <button class="w-3.5 h-3.5 rounded-full bg-zinc-400 border border-slate-300 ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-3', 'images/SKC/silver.jpg', 'silver', this)">
+                                </button>
+                                <button class="w-3.5 h-3.5 rounded-full bg-[#6b7f4c] border border-transparent ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-3', 'images/SKC/green.jpg', 'green', this)">
+                                </button>
+                                <button class="w-3.5 h-3.5 rounded-full bg-[#6c3f28] border border-transparent ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-3', 'images/SKC/brown.jpg', 'brown', this)">
+                                </button>
+                                <button class="w-3.5 h-3.5 rounded-full bg-white border border-slate-300 ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-3', 'images/SKC/white.jpg', 'white', this)">
+                                </button>
+                            </div>
+                        </div>
+
+                        <span class="text-[10px] uppercase font-bold text-emerald-700 tracking-wider mb-1">Under Sink Storage</span>
+                        <h2 class="text-base font-bold text-slate-950 group-hover:text-emerald-800 transition-colors mb-2 leading-snug">
+                            Multifunctional Countertop Sink Caddy
+                        </h2>
+                        <p class="text-xs text-slate-400 mb-6 leading-relaxed line-clamp-3">
+                            Integrated automatic drainboard setup keeping dishwash soaps, brushes, sponges, and towels beautifully ventilated and completely bone-dry.
+                        </p>
+                        <div class="mt-auto">
+                            <a href="https://www.amazon.com/dp/B0FSKPZRJV?th=1" target="_blank" rel="noopener noreferrer"
+                               class="w-full inline-flex items-center justify-center px-4 py-2.5 border border-transparent text-xs font-bold rounded-full text-white bg-emerald-950 hover:bg-emerald-800 transition-colors shadow-2xs">
+                                 Buy on Amazon
+                                 <i data-lucide="external-link" class="w-3.5 h-3.5 ml-1.5 opacity-80"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-category="bathroom" class="product-card bg-white rounded-2xl border border-slate-100 hover:border-slate-200 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col overflow-hidden group">
+                    <div class="aspect-square bg-white relative flex items-center justify-center p-6 border-b border-slate-100 overflow-hidden">
+                        <img id="product-4-img" 
+                             src="images/SC01/gold.jpg" 
+                             alt="Multifunctional Countertop Sink Organizer" 
+                             class="max-h-full max-w-full object-contain group-hover:scale-102 transition-transform duration-300">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+                                Color: <span id="product-3-color-text" class="text-slate-600 font-semibold">gold</span>
+                            </span>
+                            <div class="flex space-x-1.5">
+                                <button class="w-3.5 h-3.5 rounded-full bg-amber-400 border border-transparent ring-2 ring-offset-1 ring-emerald-600 cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-4', 'images/SC01/gold.jpg', 'gold', this)">
+                                </button>
+                                <button class="w-3.5 h-3.5 rounded-full bg-slate-900 border border-slate-300 ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-4', 'images/SC01/black.jpg', 'black', this)">
+                                </button>
+                                <!-- <button class="w-3.5 h-3.5 rounded-full bg-amber-400 border border-transparent ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-4', 'https://m.media-amazon.com/images/I/71AgyBVCHlL._AC_SL1500_.jpg', 'Gold', this)">
+                                </button>
+                                <button class="w-3.5 h-3.5 rounded-full bg-zinc-400 border border-transparent ring-2 ring-offset-1 ring-emerald-600 cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-4', 'https://m.media-amazon.com/images/I/71AgyBVCHlL._AC_SL1500_.jpg', 'Chrome Silver', this)">
+                                </button>
+                                <button class="w-3.5 h-3.5 rounded-full bg-blue-600 border border-transparent ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-4', 'https://m.media-amazon.com/images/I/71AgyBVCHlL._AC_SL1500_.jpg', 'Blue', this)">
+                                </button> -->
+                            </div>
+                        </div>
+
+                        <span class="text-[10px] uppercase font-bold text-emerald-700 tracking-wider mb-1">Kitchen Countertop</span>
+                        <h2 class="text-base font-bold text-slate-950 group-hover:text-emerald-800 transition-colors mb-2 leading-snug">
+                            Multifunctional Kitchen Sink Caddy with Auto-Drain Pan
+                        </h2>
+                        <p class="text-xs text-slate-400 mb-6 leading-relaxed line-clamp-3">
+                            Features a premium 45° slanted base tray that automatically self-drains gathered moisture directly into your sink basin. Beautifully holds and keeps counter sponges, brushes, soaps, and wet rags completely dry and ventilated.
+                        </p>
+                        <div class="mt-auto">
+                            <a href="https://www.amazon.com/dp/B0DPWRQ8S3" target="_blank" rel="noopener noreferrer"
+                               class="w-full inline-flex items-center justify-center px-4 py-2.5 border border-transparent text-xs font-bold rounded-full text-white bg-emerald-950 hover:bg-emerald-800 transition-colors shadow-2xs">
+                                 Buy on Amazon
+                                 <i data-lucide="external-link" class="w-3.5 h-3.5 ml-1.5 opacity-80"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-category="bathroom" class="product-card bg-white rounded-2xl border border-slate-100 hover:border-slate-200 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col overflow-hidden group">
+                    <div class="aspect-square bg-white relative flex items-center justify-center p-6 border-b border-slate-100 overflow-hidden">
+                        <img id="product-5-img" 
+                             src="images/SC01/black.jpg" 
+                             alt="Multifunctional Countertop Sink Organizer" 
+                             class="max-h-full max-w-full object-contain group-hover:scale-102 transition-transform duration-300">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+                                Color: <span id="product-3-color-text" class="text-slate-600 font-semibold">gold</span>
+                            </span>
+                            <div class="flex space-x-1.5">
+                                <button class="w-3.5 h-3.5 rounded-full bg-slate-900 border border-slate-300 ring-2 ring-offset-1 ring-emerald-600 cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-5', 'images/SC01/black.jpg', 'black', this)">
+                                </button>
+                                <button class="w-3.5 h-3.5 rounded-full bg-amber-400 border border-transparent ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-5', 'images/SC01/gold.jpg', 'gold', this)">
+                                </button>
+                                <!-- <button class="w-3.5 h-3.5 rounded-full bg-amber-400 border border-transparent ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-5', 'https://m.media-amazon.com/images/I/71AgyBVCHlL._AC_SL1500_.jpg', 'Gold', this)">
+                                </button>
+                                <button class="w-3.5 h-3.5 rounded-full bg-zinc-400 border border-transparent ring-2 ring-offset-1 ring-emerald-600 cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-5', 'https://m.media-amazon.com/images/I/71AgyBVCHlL._AC_SL1500_.jpg', 'Chrome Silver', this)">
+                                </button>
+                                <button class="w-3.5 h-3.5 rounded-full bg-blue-600 border border-transparent ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-5', 'https://m.media-amazon.com/images/I/71AgyBVCHlL._AC_SL1500_.jpg', 'Blue', this)">
+                                </button> -->
+                            </div>
+                        </div>
+
+                        <span class="text-[10px] uppercase font-bold text-emerald-700 tracking-wider mb-1">Kitchen Countertop</span>
+                        <h2 class="text-base font-bold text-slate-950 group-hover:text-emerald-800 transition-colors mb-2 leading-snug">
+                            Multifunctional Kitchen Sink Caddy with Auto-Drain Pan
+                        </h2>
+                        <p class="text-xs text-slate-400 mb-6 leading-relaxed line-clamp-3">
+                            Features a premium 45° slanted base tray that automatically self-drains gathered moisture directly into your sink basin. Beautifully holds and keeps counter sponges, brushes, soaps, and wet rags completely dry and ventilated.
+                        </p>
+                        <div class="mt-auto">
+                            <a href="https://www.amazon.com/dp/B0DPWS1HWX?th=1" target="_blank" rel="noopener noreferrer"
+                               class="w-full inline-flex items-center justify-center px-4 py-2.5 border border-transparent text-xs font-bold rounded-full text-white bg-emerald-950 hover:bg-emerald-800 transition-colors shadow-2xs">
+                                 Buy on Amazon
+                                 <i data-lucide="external-link" class="w-3.5 h-3.5 ml-1.5 opacity-80"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-category="Jewelry Organizer" class="product-card bg-white rounded-2xl border border-slate-100 hover:border-slate-200 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col overflow-hidden group">
+                    <div class="aspect-square bg-white relative flex items-center justify-center p-6 border-b border-slate-100 overflow-hidden">
+                        <img id="product-6-img" 
+                             src="images/JT001/JT001-white.jpg" 
+                             alt="Elegant Jewelry Holder" 
+                             class="max-h-full max-w-full object-contain group-hover:scale-102 transition-transform duration-300">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+                                Color: <span id="product-3-color-text" class="text-slate-600 font-semibold">white</span>
+                            </span>
+                            <div class="flex space-x-1.5">
+                                <button class="w-3.5 h-3.5 rounded-full bg-slate-900 border border-transparent ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-6', 'images/JT001/JT001-black.jpg', 'black', this)">
+                                </button>
+                                <button class="w-3.5 h-3.5 rounded-full bg-white border border-slate-300 ring-2 ring-offset-1 ring-emerald-600 cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-6', 'images/JT001/JT001-white.jpg', 'white', this)">
+                                </button>
+                                <button class="w-3.5 h-3.5 rounded-full bg-[#235b5e] border border-transparent ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-6', 'images/JT001/JT001-green.jpg', 'Emerald Green', this)">
+                                </button>
+                                <!-- <button class="w-3.5 h-3.5 rounded-full bg-zinc-400 border border-transparent ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-6', 'https://m.media-amazon.com/images/I/71AgyBVCHlL._AC_SL1500_.jpg', 'Chrome Silver', this)">
+                                </button>
+                                <button class="w-3.5 h-3.5 rounded-full bg-blue-600 border border-transparent ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-6', 'https://m.media-amazon.com/images/I/71AgyBVCHlL._AC_SL1500_.jpg', 'Blue', this)">
+                                </button> -->
+                            </div>
+                        </div>
+
+                        <span class="text-[10px] uppercase font-bold text-emerald-700 tracking-wider mb-1">Dressing Table Countertop</span>
+                        <h2 class="text-base font-bold text-slate-950 group-hover:text-emerald-800 transition-colors mb-2 leading-snug">
+                            Elegant Jewelry Holder Organizer with Ceramic Tray
+                        </h2>
+                        <p class="text-xs text-slate-400 mb-6 leading-relaxed line-clamp-3">
+                            Elevate your jewelry storage with this stylish and functional jewelry organizer stand, that combines modern design with practical organization to keep your accessories beautifully displayed and easily accessible.
+                        </p>
+                        <div class="mt-auto">
+                            <a href="https://www.amazon.com/dp/B0D1MRV3GZ?th=1" target="_blank" rel="noopener noreferrer"
+                               class="w-full inline-flex items-center justify-center px-4 py-2.5 border border-transparent text-xs font-bold rounded-full text-white bg-emerald-950 hover:bg-emerald-800 transition-colors shadow-2xs">
+                                 Buy on Amazon
+                                 <i data-lucide="external-link" class="w-3.5 h-3.5 ml-1.5 opacity-80"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-category="Jewelry Organizer" class="product-card bg-white rounded-2xl border border-slate-100 hover:border-slate-200 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col overflow-hidden group">
+                    <div class="aspect-square bg-white relative flex items-center justify-center p-6 border-b border-slate-100 overflow-hidden">
+                        <img id="product-7-img" 
+                             src="images/JT001/JT007 black.jpg" 
+                             alt="Elegant Jewelry Holder" 
+                             class="max-h-full max-w-full object-contain group-hover:scale-102 transition-transform duration-300">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+                                Color: <span id="product-3-color-text" class="text-slate-600 font-semibold">white</span>
+                            </span>
+                            <div class="flex space-x-1.5">
+                                <button class="w-3.5 h-3.5 rounded-full bg-slate-900 border border-transparent ring-2 ring-offset-1 ring-emerald-600 cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-7', 'images/JT001/JT007 black.jpg', 'black', this)">
+                                </button>
+                                <button class="w-3.5 h-3.5 rounded-full bg-white border border-slate-300 ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-7', 'images/JT001/JT007 white.jpg', 'white', this)">
+                                </button>
+                                <!-- <button class="w-3.5 h-3.5 rounded-full bg-[#235b5e] border border-transparent ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-7', 'images/JT001/JT001-green.jpg', 'Emerald Green', this)">
+                                </button>
+                                <button class="w-3.5 h-3.5 rounded-full bg-zinc-400 border border-transparent ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-7', 'https://m.media-amazon.com/images/I/71AgyBVCHlL._AC_SL1500_.jpg', 'Chrome Silver', this)">
+                                </button>
+                                <button class="w-3.5 h-3.5 rounded-full bg-blue-600 border border-transparent ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-7', 'https://m.media-amazon.com/images/I/71AgyBVCHlL._AC_SL1500_.jpg', 'Blue', this)">
+                                </button> -->
+                            </div>
+                        </div>
+
+                        <span class="text-[10px] uppercase font-bold text-emerald-700 tracking-wider mb-1">Dressing Table Countertop</span>
+                        <h2 class="text-base font-bold text-slate-950 group-hover:text-emerald-800 transition-colors mb-2 leading-snug">
+                            Elegant Jewelry Holder Organizer Velvet Rod with Ceramic Tray
+                        </h2>
+                        <p class="text-xs text-slate-400 mb-6 leading-relaxed line-clamp-3">
+                            Elevate your jewelry storage with this stylish and functional jewelry organizer stand, that combines modern design with practical organization to keep your accessories beautifully displayed and easily accessible.
+                        </p>
+                        <div class="mt-auto">
+                            <a href="https://www.amazon.com/dp/B0FYFX2VXF?th=1" target="_blank" rel="noopener noreferrer"
+                               class="w-full inline-flex items-center justify-center px-4 py-2.5 border border-transparent text-xs font-bold rounded-full text-white bg-emerald-950 hover:bg-emerald-800 transition-colors shadow-2xs">
+                                 Buy on Amazon
+                                 <i data-lucide="external-link" class="w-3.5 h-3.5 ml-1.5 opacity-80"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-category="Jewelry Organizer" class="product-card bg-white rounded-2xl border border-slate-100 hover:border-slate-200 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col overflow-hidden group">
+                    <div class="aspect-square bg-white relative flex items-center justify-center p-6 border-b border-slate-100 overflow-hidden">
+                        <img id="product-8-img" 
+                             src="images/JT001/JT005.jpg" 
+                             alt="Elegant Jewelry Holder" 
+                             class="max-h-full max-w-full object-contain group-hover:scale-102 transition-transform duration-300">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+                                Color: <span id="product-3-color-text" class="text-slate-600 font-semibold">blue & white</span>
+                            </span>
+                        </div>
+
+                        <span class="text-[10px] uppercase font-bold text-emerald-700 tracking-wider mb-1">Dressing Table Countertop</span>
+                        <h2 class="text-base font-bold text-slate-950 group-hover:text-emerald-800 transition-colors mb-2 leading-snug">
+                            Heart Shape Jewelry Holder Organizer with Ceramic Tray
+                        </h2>
+                        <p class="text-xs text-slate-400 mb-6 leading-relaxed line-clamp-3">
+                            Elevate your jewelry storage with this stylish and functional jewelry organizer stand, that combines modern design with practical organization to keep your accessories beautifully displayed and easily accessible.
+                        </p>
+                        <div class="mt-auto">
+                            <a href="https://www.amazon.com/dp/B0FB3RGBWB?th=1" target="_blank" rel="noopener noreferrer"
+                               class="w-full inline-flex items-center justify-center px-4 py-2.5 border border-transparent text-xs font-bold rounded-full text-white bg-emerald-950 hover:bg-emerald-800 transition-colors shadow-2xs">
+                                 Buy on Amazon
+                                 <i data-lucide="external-link" class="w-3.5 h-3.5 ml-1.5 opacity-80"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div data-category="Jewelry Organizer" class="product-card bg-white rounded-2xl border border-slate-100 hover:border-slate-200 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col overflow-hidden group">
+                    <div class="aspect-square bg-white relative flex items-center justify-center p-6 border-b border-slate-100 overflow-hidden">
+                        <img id="product-9-img" 
+                             src="images/JT001/JT003-white.jpg" 
+                             alt="Elegant Jewelry Holder" 
+                             class="max-h-full max-w-full object-contain group-hover:scale-102 transition-transform duration-300">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+                                Color: <span id="product-3-color-text" class="text-slate-600 font-semibold">white</span>
+                            </span>
+                            <div class="flex space-x-1.5">
+                                <button class="w-3.5 h-3.5 rounded-full bg-slate-900 border border-transparent ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-9', 'images/JT001/JT003-black.jpg', 'black', this)">
+                                </button>
+                                <button class="w-3.5 h-3.5 rounded-full bg-white border border-slate-300 ring-2 ring-offset-1 ring-emerald-600 cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-9', 'images/JT001/JT003-white.jpg', 'white', this)">
+                                </button>
+                            </div>
+                        </div>
+
+                        <span class="text-[10px] uppercase font-bold text-emerald-700 tracking-wider mb-1">Dressing Table Countertop</span>
+                        <h2 class="text-base font-bold text-slate-950 group-hover:text-emerald-800 transition-colors mb-2 leading-snug">
+                            Arch Jewelry Holder Organizer with Velevet Ring Tray
+                        </h2>
+                        <p class="text-xs text-slate-400 mb-6 leading-relaxed line-clamp-3">
+                            Elevate your jewelry storage with this stylish and functional jewelry organizer stand, that combines modern design with practical organization to keep your accessories beautifully displayed and easily accessible.
+                        </p>
+                        <div class="mt-auto">
+                            <a href="https://www.amazon.com/dp/B0D1MVVBYM?th=1" target="_blank" rel="noopener noreferrer"
+                               class="w-full inline-flex items-center justify-center px-4 py-2.5 border border-transparent text-xs font-bold rounded-full text-white bg-emerald-950 hover:bg-emerald-800 transition-colors shadow-2xs">
+                                 Buy on Amazon
+                                 <i data-lucide="external-link" class="w-3.5 h-3.5 ml-1.5 opacity-80"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-category="Jewelry Organizer" class="product-card bg-white rounded-2xl border border-slate-100 hover:border-slate-200 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col overflow-hidden group">
+                    <div class="aspect-square bg-white relative flex items-center justify-center p-6 border-b border-slate-100 overflow-hidden">
+                        <img id="product-10-img" 
+                             src="images/JT001/JT002-02white.jpg" 
+                             alt="Elegant Jewelry Holder" 
+                             class="max-h-full max-w-full object-contain group-hover:scale-102 transition-transform duration-300">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+                                Color: <span id="product-3-color-text" class="text-slate-600 font-semibold">white & gold</span>
+                            </span>
+                            <div class="flex space-x-1.5">
+                                <button class="w-3.5 h-3.5 rounded-full bg-slate-900 border border-transparent ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-10', 'images/JT001/JT002-black.jpg', 'black', this)">
+                                </button>
+                                <button class="w-3.5 h-3.5 rounded-full bg-white border border-slate-300 ring-2 ring-offset-1 ring-emerald-600 cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-10', 'images/JT001/JT002-02white.jpg', 'white & gold', this)">
+                                </button>
+                                <button class="w-3.5 h-3.5 rounded-full bg-amber-400 border border-transparent ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-10', 'images/JT001/JT002-gold.jpg', 'Gold', this)">
+                                </button>
+                            </div>
+                        </div>
+
+                        <span class="text-[10px] uppercase font-bold text-emerald-700 tracking-wider mb-1">Dressing Table Countertop</span>
+                        <h2 class="text-base font-bold text-slate-950 group-hover:text-emerald-800 transition-colors mb-2 leading-snug">
+                            2 Tier Jewelry Holder Organizer
+                        </h2>
+                        <p class="text-xs text-slate-400 mb-6 leading-relaxed line-clamp-3">
+                            Elevate your jewelry storage with this stylish and functional jewelry organizer stand, that combines modern design with practical organization to keep your accessories beautifully displayed and easily accessible.
+                        </p>
+                        <div class="mt-auto">
+                            <a href="https://www.amazon.com/dp/B0D1MWHFWD?th=1" target="_blank" rel="noopener noreferrer"
+                               class="w-full inline-flex items-center justify-center px-4 py-2.5 border border-transparent text-xs font-bold rounded-full text-white bg-emerald-950 hover:bg-emerald-800 transition-colors shadow-2xs">
+                                 Buy on Amazon
+                                 <i data-lucide="external-link" class="w-3.5 h-3.5 ml-1.5 opacity-80"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-category="Jewelry Organizer" class="product-card bg-white rounded-2xl border border-slate-100 hover:border-slate-200 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col overflow-hidden group">
+                    <div class="aspect-square bg-white relative flex items-center justify-center p-6 border-b border-slate-100 overflow-hidden">
+                        <img id="product-11-img" 
+                             src="images/JT001/JT004-black.jpg" 
+                             alt="Elegant Jewelry Holder" 
+                             class="max-h-full max-w-full object-contain group-hover:scale-102 transition-transform duration-300">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+                                Color: <span id="product-3-color-text" class="text-slate-600 font-semibold">black</span>
+                            </span>
+                            <div class="flex space-x-1.5">
+                                <button class="w-3.5 h-3.5 rounded-full bg-slate-900 border border-transparent ring-2 ring-offset-1 ring-emerald-600 cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-11', 'images/JT001/JT004-black.jpg', 'black', this)">
+                                </button>
+                                <button class="w-3.5 h-3.5 rounded-full bg-white border border-slate-300 ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                        onclick="switchColor('product-11', 'images/JT001/JT004-gold.jpg', 'gold', this)">
+                                </button>
+                            </div>
+                        </div>
+
+                        <span class="text-[10px] uppercase font-bold text-emerald-700 tracking-wider mb-1">Dressing Table Countertop</span>
+                        <h2 class="text-base font-bold text-slate-950 group-hover:text-emerald-800 transition-colors mb-2 leading-snug">
+                            Wall Mounted Jewelry Organizer with Shelf and Hooks
+                        </h2>
+                        <p class="text-xs text-slate-400 mb-6 leading-relaxed line-clamp-3">
+                            Elevate your jewelry storage with this stylish and functional jewelry organizer stand, that combines modern design with practical organization to keep your accessories beautifully displayed and easily accessible.
+                        </p>
+                        <div class="mt-auto">
+                            <a href="https://www.amazon.com/dp/B0DSZQ1KS8?th=1" target="_blank" rel="noopener noreferrer"
+                               class="w-full inline-flex items-center justify-center px-4 py-2.5 border border-transparent text-xs font-bold rounded-full text-white bg-emerald-950 hover:bg-emerald-800 transition-colors shadow-2xs">
+                                 Buy on Amazon
+                                 <i data-lucide="external-link" class="w-3.5 h-3.5 ml-1.5 opacity-80"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="faq" class="py-20 bg-slate-50 border-t border-slate-100 scroll-mt-24">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center mb-12">
+                    <h2 class="text-2xl font-extrabold text-slate-950 tracking-tight mb-2">Frequently Asked Questions</h2>
+                    <p class="text-xs text-slate-500">Find quick expert answers regarding product dimensions, installation, durability, and daily use.</p>
+                </div>
+
+                <div class="space-y-3">
+                    
+                    <div class="bg-white border border-slate-100 rounded-xl overflow-hidden transition-all duration-200">
+                        <button type="button" class="w-full p-5 text-left text-xs font-bold text-slate-950 flex items-center justify-between focus:outline-none faq-toggle">
+                            <span>Will the Under-Sink Organizer clear the plumbing pipes under my kitchen sink?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform duration-200 chevron-icon"></i>
+                        </button>
+                        <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out faq-content">
+                            <p class="p-5 pt-0 text-xs text-slate-500 leading-relaxed border-t border-slate-50/50">
+                                Yes, our 2-tier under-sink storage system is intentionally engineered with an asymmetrical or multi-height structure (such as a narrower top basket or reversible layout). This allows it to easily clear garbage disposals, central sink traps, and vertical pipes while optimizing your restricted layout.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-slate-100 rounded-xl overflow-hidden transition-all duration-200">
+                        <button type="button" class="w-full p-5 text-left text-xs font-bold text-slate-950 flex items-center justify-between focus:outline-none faq-toggle">
+                            <span>Are the under-sink sliding tracks smooth enough to pull out when heavily loaded?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform duration-200 chevron-icon"></i>
+                        </button>
+                        <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out faq-content">
+                            <p class="p-5 pt-0 text-xs text-slate-500 leading-relaxed border-t border-slate-50/50">
+                                Absolutely. Saydear organizers utilize premium heavy-gauge steel tracking channels with precision guidance. Even when packed near the maximum load threshold (up to 50 lbs of laundry detergents and full bottles), the pull-out drawer mechanism glides smoothly without catching or wobbling.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-slate-100 rounded-xl overflow-hidden transition-all duration-200">
+                        <button type="button" class="w-full p-5 text-left text-xs font-bold text-slate-950 flex items-center justify-between focus:outline-none faq-toggle">
+                            <span>How reliable is the shower caddy adhesive? Will it drop down over time?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform duration-200 chevron-icon"></i>
+                        </button>
+                        <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out faq-content">
+                            <p class="p-5 pt-0 text-xs text-slate-500 leading-relaxed border-t border-slate-50/50">
+                                Our transparent high-molecular adhesives are rated to safely sustain up to 30 lbs and are 100% moistureproof. They undergo continuous humidity testing to ensure they will never drop or peel under steamy, hot shower conditions. For optimal results, apply onto clean, dry, non-porous surfaces like tile or glass, and let it cure for 24 hours before loading.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-slate-100 rounded-xl overflow-hidden transition-all duration-200">
+                        <button type="button" class="w-full p-5 text-left text-xs font-bold text-slate-950 flex items-center justify-between focus:outline-none faq-toggle">
+                            <span>Will the metallic frames rust or corrode when constantly exposed to water?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform duration-200 chevron-icon"></i>
+                        </button>
+                        <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out faq-content">
+                            <p class="p-5 pt-0 text-xs text-slate-500 leading-relaxed border-t border-slate-50/50">
+                                Never. Our shower caddies are manufactured using authentic SUS304 premium stainless steel wire alloy, and our kitchen countertop organizers feature a specialized dual-layer hydrophobic powder coating. Both finishes provide ultimate protection against corrosion, rust, and water-spot buildup over extended long-term use.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-slate-100 rounded-xl overflow-hidden transition-all duration-200">
+                        <button type="button" class="w-full p-5 text-left text-xs font-bold text-slate-950 flex items-center justify-between focus:outline-none faq-toggle">
+                            <span>Does the auto-drain kitchen sink caddy truly drain moisture on its own?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform duration-200 chevron-icon"></i>
+                        </button>
+                        <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out faq-content">
+                            <p class="p-5 pt-0 text-xs text-slate-500 leading-relaxed border-t border-slate-50/50">
+                                Yes. It features an integrated 45-degree slanted base drip tray with extended drainage lips. Water dripping from wet sponges or scrub brushes immediately channels downward and pours straight back into your sink basin, eliminating stagnant pooling, odors, and messy manual cleanup.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-slate-100 rounded-xl overflow-hidden transition-all duration-200">
+                        <button type="button" class="w-full p-5 text-left text-xs font-bold text-slate-950 flex items-center justify-between focus:outline-none faq-toggle">
+                            <span>Can the baskets accommodate extra-large or jumbo size shampoo and detergent bottles?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform duration-200 chevron-icon"></i>
+                        </button>
+                        <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out faq-content">
+                            <p class="p-5 pt-0 text-xs text-slate-500 leading-relaxed border-t border-slate-50/50">
+                                Yes, we have optimized the structural vertical distance and guardrail heights across our entire lineup. The bottom drawer of our under-sink organizer comfortably holds jumbo 32oz cleaning bottles, and our shower caddies are deep enough to securely stand tall pump dispensers without them tilting or falling over out of the basket.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-slate-100 rounded-xl overflow-hidden transition-all duration-200">
+                        <button type="button" class="w-full p-5 text-left text-xs font-bold text-slate-950 flex items-center justify-between focus:outline-none faq-toggle">
+                            <span>Where are Saydear products shipped from and how fast is delivery?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform duration-200 chevron-icon"></i>
+                        </button>
+                        <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out faq-content">
+                            <p class="p-5 pt-0 text-xs text-slate-500 leading-relaxed border-t border-slate-50/50">
+                                All Saydear customer orders are entirely fulfilled and dispatched directly via Amazon local FBA fulfillment centers across the United States. This structural distribution setup guarantees that you receive official secure packaging and ultra-fast, reliable 2-day Prime delivery at checkout.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-slate-100 rounded-xl overflow-hidden transition-all duration-200">
+                        <button type="button" class="w-full p-5 text-left text-xs font-bold text-slate-950 flex items-center justify-between focus:outline-none faq-toggle">
+                            <span>How can I activate my extended warranty or request free replacement parts?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform duration-200 chevron-icon"></i>
+                        </button>
+                        <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out faq-content">
+                            <p class="p-5 pt-0 text-xs text-slate-500 leading-relaxed border-t border-slate-50/50">
+                                You can register your Amazon Order ID directly on our official <a href="warranty.html" class="text-emerald-700 font-medium underline tracking-wide">Warranty Registration Page</a>. Once registered, your setup is fully protected under our premium 24-month warranty coverage plan for free, immediate dispatch of replacement parts or hardware components.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-950 text-slate-400 text-sm border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-12">
+                
+                <div class="md:col-span-5 space-y-4">
+                    <span class="text-xl font-extrabold text-white tracking-tight">Saydear<span class="text-emerald-500">.</span></span>
+                    <p class="text-xs leading-relaxed text-slate-400 max-w-sm">
+                        Dedicated to blending structural stability with minimalist lines to craft durable, premium home organization essentials worldwide.
+                    </p>
+                </div>
+
+                <div class="md:col-span-4 grid grid-cols-2 gap-4">
+                    <div>
+                        <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">Explore</h4>
+                        <ul class="space-y-2 text-xs">
+                            <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+                            <li><a href="products.html" class="hover:text-white transition-colors">Products</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">Support</h4>
+                        <ul class="space-y-2 text-xs">
+                            <li><a href="community.html" class="hover:text-white transition-colors">Community</a></li>
+                            <li><a href="#faq" class="hover:text-white transition-colors">FAQ</a></li>
+                            <li><a href="warranty.html" class="hover:text-white transition-colors">Warranty Registry</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="md:col-span-3 space-y-4">
+                    <h4 class="text-white font-bold text-xs uppercase tracking-wider">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="p-2 bg-slate-900 text-slate-300 hover:text-white rounded-full transition-colors"><i data-lucide="facebook" class="w-4 h-4"></i></a>
+                        <a href="#" class="p-2 bg-slate-900 text-slate-300 hover:text-white rounded-full transition-colors"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                        <a href="#" class="p-2 bg-slate-900 text-slate-300 hover:text-white rounded-full transition-colors"><i data-lucide="music" class="w-4 h-4"></i></a>
+                        <a href="#" class="p-2 bg-slate-900 text-slate-300 hover:text-white rounded-full transition-colors"><i data-lucide="youtube" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pt-8 border-t border-slate-900 text-center space-y-3">
+                <p class="text-xs text-slate-500">&copy; 2026 Saydear. All rights reserved.</p>
+                <p class="text-[10px] text-slate-600 max-w-2xl mx-auto leading-normal tracking-wide">
+                    Privacy & Data Security: We deeply value your privacy. Any personal details submitted via our ambassador application or newsletter subscription are strictly used for brand communication and reward distribution. We never sell, rent, or share your data with unauthorized third parties. By submitting, you agree to our standard data handling practices.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // 移动端菜单
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                menuIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            }
+        });
+
+        // 动态产品分类筛选逻辑
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const productCards = document.querySelectorAll('.product-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetFilter = button.getAttribute('data-filter');
+
+                // 1. 切换按钮的激活高亮样式
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('bg-emerald-950', 'text-white', 'font-bold', 'shadow-2xs');
+                    btn.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200/60', 'font-medium');
+                });
+                button.classList.add('bg-emerald-950', 'text-white', 'font-bold', 'shadow-2xs');
+                button.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200/60', 'font-medium');
+
+                // 2. 筛选并执行显隐动画
+                productCards.forEach(card => {
+                    const cardCategory = card.getAttribute('data-category');
+                    if (targetFilter === 'all' || cardCategory === targetFilter) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // FAQ手风琴折叠逻辑
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const content = toggle.nextElementSibling;
+                const chevron = toggle.querySelector('.chevron-icon');
+                
+                if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+                    content.style.maxHeight = '0px';
+                    chevron.style.transform = 'rotate(0deg)';
+                } else {
+                    document.querySelectorAll('.faq-content').forEach(item => item.style.maxHeight = '0px');
+                    document.querySelectorAll('.chevron-icon').forEach(icon => icon.style.transform = 'rotate(0deg)');
+                    
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    chevron.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+        // 多变体颜色图片动态切换函数
+        function switchColor(productId, imgUrl, colorName, element) {
+            const targetImg = document.getElementById(`${productId}-img`);
+            if (targetImg) targetImg.src = imgUrl;
+
+            const targetText = document.getElementById(`${productId}-color-text`);
+            if (targetText) targetText.textContent = colorName;
+
+            const siblingButtons = element.parentNode.querySelectorAll('button');
+            siblingButtons.forEach(btn => {
+                btn.classList.remove('ring-2', 'ring-emerald-600');
+                btn.classList.add('ring-1', 'ring-transparent');
+            });
+            element.classList.remove('ring-1', 'ring-transparent');
+            element.classList.add('ring-2', 'ring-emerald-600');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saydear | Smart Home & Kitchen Organization</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            background-color: #FAFAFA;
+        }
+    </style>
+</head>
+<body class="text-slate-900 antialiased min-h-screen flex flex-col">
+
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="text-2xl font-extrabold tracking-tight text-emerald-950">
+                        Saydear<span class="text-emerald-600">.</span>
+                    </a>
+                </div>
+
+                <nav class="hidden md:flex space-x-8 text-sm font-medium tracking-wide">
+                    <a href="index.html" class="text-emerald-600 border-b-2 border-emerald-600 pb-1">Home</a>
+                    <a href="products.html" class="text-slate-500 hover:text-emerald-950 transition-colors duration-200">Products</a>
+                    <a href="community.html" class="text-slate-500 hover:text-emerald-950 transition-colors duration-200">Community</a>
+                    <a href="products.html#faq" class="text-slate-500 hover:text-emerald-950 transition-colors duration-200">FAQ</a>
+                    <a href="warranty.html" class="text-slate-500 hover:text-emerald-950 transition-colors duration-200">Support & Warranty</a>
+                </nav>
+
+                <div class="hidden md:flex items-center">
+                    <a href="https://www.amazon.com" target="_blank" rel="noopener noreferrer" 
+                       class="inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-sm font-semibold rounded-full text-white bg-emerald-950 hover:bg-emerald-800 transition-all duration-200 shadow-xs">
+                        Shop on Amazon
+                        <i data-lucide="external-link" class="w-4 h-4 ml-1.5 opacity-80"></i>
+                    </a>
+                </div>
+
+                <div class="md:hidden">
+                    <button type="button" id="mobile-menu-btn" class="p-2 rounded-md text-slate-500 hover:text-emerald-950 focus:outline-none">
+                        <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+                        <i data-lucide="x" id="close-icon" class="w-6 h-6 hidden"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="hidden md:hidden bg-white border-b border-slate-100" id="mobile-menu">
+            <div class="px-4 pt-3 pb-6 space-y-3 sm:px-3 text-base font-medium">
+                <a href="index.html" class="block px-3 py-2 rounded-md bg-emerald-50 text-emerald-700">Home</a>
+                <a href="products.html" class="block px-3 py-2 rounded-md text-slate-600 hover:bg-slate-50 hover:text-emerald-950">Products</a>
+                <a href="community.html" class="block px-3 py-2 rounded-md text-slate-600 hover:bg-slate-50 hover:text-emerald-950">Community</a>
+                <a href="products.html#faq" class="block px-3 py-2 rounded-md text-slate-600 hover:bg-slate-50 hover:text-emerald-950">FAQ</a>
+                <a href="warranty.html" class="block px-3 py-2 rounded-md text-slate-600 hover:bg-slate-50 hover:text-emerald-950">Support & Warranty</a>
+                <div class="pt-4 px-3">
+                    <a href="https://www.amazon.com/stores/Saydear/page/A23476AC-341C-42B8-9F1D-443835DB5297" target="_blank" rel="noopener noreferrer" 
+                       class="w-full inline-flex items-center justify-center px-4 py-3 border border-transparent rounded-full text-white bg-emerald-950 font-semibold shadow-xs text-center">
+                        Shop on Amazon
+                        <i data-lucide="external-link" class="w-4 h-4 ml-1.5 opacity-80"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+
+        <section class="bg-white pt-16 pb-20 border-b border-slate-100 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-4xl mx-auto flex flex-col items-center mb-14">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 uppercase tracking-wider mb-6">
+                        Premium Quality Space-Saving Solutions
+                    </span>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-950 tracking-tight leading-tight mb-6 max-w-3xl">
+                        Saydear – Smart Home & Kitchen Organization
+                    </h1>
+                    
+                    <p class="text-sm sm:text-base md:text-lg text-slate-500 mb-8 leading-relaxed max-w-2xl">
+                        Maximize every inch of your home. Explore our heavy-duty, meticulously engineered storage solutions built for long-lasting durability, elegant modern styling, and extreme daily functionality.
+                    </p>
+
+                    <div class="flex flex-wrap justify-center items-center gap-x-8 gap-y-3 text-xs font-semibold text-slate-600 mb-10">
+                        <span class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i> Smooth Sliding Design</span>
+                        <span class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i> Heavy-Duty Carbon Steel</span>
+                        <span class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i> Rust & Waterproof Finish</span>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                        <a href="products.html" class="inline-flex items-center justify-center px-8 py-3.5 border border-transparent text-sm font-bold rounded-full text-white bg-emerald-600 hover:bg-emerald-500 shadow-md hover:shadow-lg transition-all min-w-[180px]">
+                            Explore Products
+                        </a>
+                        <a href="warranty.html" class="inline-flex items-center justify-center px-8 py-3.5 border border-slate-200 text-sm font-bold rounded-full text-slate-700 bg-slate-50 hover:bg-slate-100 shadow-xs transition-all min-w-[180px]">
+                            Register Warranty
+                        </a>
+                    </div>
+                </div>
+
+                <div class="w-full relative rounded-2xl overflow-hidden shadow-md border border-slate-100 bg-slate-50">
+                    <img src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/f1ef1667-3792-43d4-98a1-b317fd89c373.__CR0,0,1464,600_PT0_SX1464_V1___.jpg" 
+                         alt="Saydear Kitchen Organization Real Setup Scene" 
+                         class="w-full h-auto object-contain block">
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="py-16 bg-white border-b border-slate-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    
+                    <div class="flex flex-col items-center text-center p-4">
+                        <div class="w-12 h-12 rounded-full bg-slate-50 text-emerald-950 flex items-center justify-center mb-4">
+                            <i data-lucide="layers" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-slate-900 mb-2">Space Maximization</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed max-w-xs">
+                            Clever multi-tier architectures designed specifically to unlock and declutter hidden vertical spaces under your sinks and counters.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col items-center text-center p-4">
+                        <div class="w-12 h-12 rounded-full bg-slate-50 text-emerald-950 flex items-center justify-center mb-4">
+                            <i data-lucide="shield-check" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-slate-900 mb-2">Industrial Grade Strength</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed max-w-xs">
+                            Constructed utilizing reinforced heavy-gauge metal frames capable of seamlessly supporting maximum weight capacities without bending.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col items-center text-center p-4">
+                        <div class="w-12 h-12 rounded-full bg-slate-50 text-emerald-950 flex items-center justify-center mb-4">
+                            <i data-lucide="wrench" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-slate-900 mb-2">Hassle-Free Assembly</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed max-w-xs">
+                            Engineered for intuitive, tool-free installation mechanics or non-destructive traceless adhesive configurations.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <section class="py-20 lg:py-28 bg-slate-50/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-3xl font-extrabold text-slate-950 tracking-tight mb-4">
+                        Our Best Sellers on Amazon
+                    </h2>
+                    <p class="text-sm text-slate-500">
+                        Explore our top-tier organizational systems trusted by modern households.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <div class="bg-white rounded-2xl border border-slate-100 hover:border-slate-200 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col overflow-hidden group">
+                        <div class="aspect-square bg-white relative flex items-center justify-center p-6 border-b border-slate-100 overflow-hidden">
+                            <img id="product-1-img" 
+                                 src="images/US001/black.jpg" 
+                                 alt="Heavy-Duty 2-Tier Sliding Under-Sink Organizer" 
+                                 class="max-h-full max-w-full object-contain group-hover:scale-102 transition-transform duration-300">
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+                                    Color: <span id="product-1-color-text" class="text-slate-600 font-semibold">black</span>
+                                </span>
+                                <div class="flex space-x-1.5">
+                                    <button class="w-3.5 h-3.5 rounded-full bg-slate-900 border border-transparent ring-2 ring-offset-1 ring-emerald-600 cursor-pointer transition-all focus:outline-none"
+                                            onclick="switchColor('product-1', 'images/US001/black.jpg', 'Black', this)">
+                                    </button>
+                                    <button class="w-3.5 h-3.5 rounded-full bg-white border border-slate-300 ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                            onclick="switchColor('product-1', 'images/US001/white.jpg', 'White', this)">
+                                    </button>
+                                    <button class="w-3.5 h-3.5 rounded-full bg-amber-400 border border-transparent ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                            onclick="switchColor('product-1', 'images/US001/gold.jpg', 'Gold', this)">
+                                    </button>
+                                    <button class="w-3.5 h-3.5 rounded-full bg-slate-400 border border-transparent ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                            onclick="switchColor('product-1', 'images/US001/grey.jpg', 'Grey', this)">
+                                    </button>
+                                    <button class="w-3.5 h-3.5 rounded-full bg-[#62a9c4] border border-transparent ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                            onclick="switchColor('product-1', 'images/US001/blue.jpg', 'Blue', this)">
+                                    </button>
+                                </div>
+                            </div>
+
+                            <h3 class="text-base font-bold text-slate-950 group-hover:text-emerald-800 transition-colors mb-2 leading-snug">
+                                Heavy-Duty 2-Tier Sliding Under-Sink Organizer
+                            </h3>
+                            <p class="text-xs text-slate-400 mb-6 leading-relaxed line-clamp-2">
+                                Smooth pull-out drawer mechanism allows instant access to hard-to-reach items. Perfect for kitchen cabinets, bathrooms, and laundry rooms.
+                            </p>
+                            <div class="mt-auto">
+                                <a href="https://www.amazon.com/dp/B0D16VD6GT" target="_blank" rel="noopener noreferrer"
+                                   class="w-full inline-flex items-center justify-center px-4 py-2.5 border border-transparent text-xs font-bold rounded-full text-white bg-emerald-950 hover:bg-emerald-800 transition-colors shadow-2xs">
+                                     Buy on Amazon
+                                     <i data-lucide="external-link" class="w-3.5 h-3.5 ml-1.5 opacity-80"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-slate-100 hover:border-slate-200 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col overflow-hidden group">
+                        <div class="aspect-square bg-white relative flex items-center justify-center p-6 border-b border-slate-100 overflow-hidden">
+                            <img id="product-2-img" 
+                                 src="images/US002V/white.jpg" 
+                                 alt="Under Sink Organizer, 2-Tier Premium Metal Pull-Out Racks" 
+                                 class="max-h-full max-w-full object-contain group-hover:scale-102 transition-transform duration-300">
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+                                    Color: <span id="product-2-color-text" class="text-slate-600 font-semibold">white</span>
+                                </span>
+                                <div class="flex space-x-1.5">
+                                    <button class="w-3.5 h-3.5 rounded-full bg-slate-900 border border-transparent ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                            onclick="switchColor('product-2', 'images/US002V/black.jpg', 'Matte Black', this)">
+                                    </button>
+                                    <button class="w-3.5 h-3.5 rounded-full bg-white border border-slate-300 ring-2 ring-offset-1 ring-emerald-600 cursor-pointer transition-all focus:outline-none"
+                                            onclick="switchColor('product-2', 'images/US002V/white.jpg', 'White', this)">
+                                    </button>
+                                    <button class="w-3.5 h-3.5 rounded-full bg-amber-400 border border-transparent ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                            onclick="switchColor('product-2', 'images/US002V/gold.jpg', 'Gold', this)">
+                                    </button>
+                                    <button class="w-3.5 h-3.5 rounded-full bg-slate-400 border border-transparent ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                            onclick="switchColor('product-2', 'images/US002V/grey.jpg', 'Grey', this)">
+                                    </button>
+                                </div>
+                            </div>
+
+                            <h3 class="text-base font-bold text-slate-950 group-hover:text-emerald-800 transition-colors mb-2 leading-snug">
+                                Under Sink Organizer, 2-Tier Premium Metal Pull-Out Racks
+                            </h3>
+                            <p class="text-xs text-slate-400 mb-6 leading-relaxed line-clamp-2">
+                                Premium rust-resistant coated wire shelves with high-load traceless adhesive hooks. Damage-free organization for modern luxury tiles.
+                            </p>
+                            <div class="mt-auto">
+                                <a href="https://www.amazon.com/dp/B0FHD8BGP3?th=1" target="_blank" rel="noopener noreferrer"
+                                   class="w-full inline-flex items-center justify-center px-4 py-2.5 border border-transparent text-xs font-bold rounded-full text-white bg-emerald-950 hover:bg-emerald-800 transition-colors shadow-2xs">
+                                     Buy on Amazon
+                                     <i data-lucide="external-link" class="w-3.5 h-3.5 ml-1.5 opacity-80"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-slate-100 hover:border-slate-200 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col overflow-hidden group">
+                        <div class="aspect-square bg-white relative flex items-center justify-center p-6 border-b border-slate-100 overflow-hidden">
+                            <img id="product-3-img" 
+                                 src="images/SKC/black.jpg" 
+                                 alt="Multifunctional Countertop Sink Organizer" 
+                                 class="max-h-full max-w-full object-contain group-hover:scale-102 transition-transform duration-300">
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+                                    Color: <span id="product-3-color-text" class="text-slate-600 font-semibold">black</span>
+                                </span>
+                                <div class="flex space-x-1.5">
+                                    <button class="w-3.5 h-3.5 rounded-full bg-slate-900 border border-transparent ring-2 ring-offset-1 ring-emerald-600 cursor-pointer transition-all focus:outline-none"
+                                            onclick="switchColor('product-3', 'images/SKC/black.jpg', 'black', this)">
+                                    </button>
+                                    <button class="w-3.5 h-3.5 rounded-full bg-zinc-400 border border-slate-300 ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                            onclick="switchColor('product-3', 'images/SKC/silver.jpg', 'silver', this)">
+                                    </button>
+                                    <button class="w-3.5 h-3.5 rounded-full bg-[#6b7f4c] border border-transparent ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                            onclick="switchColor('product-3', 'images/SKC/green.jpg', 'green', this)">
+                                    </button>
+                                    <button class="w-3.5 h-3.5 rounded-full bg-[#6c3f28] border border-transparent ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                            onclick="switchColor('product-3', 'images/SKC/brown.jpg', 'brown', this)">
+                                    </button>
+                                    <button class="w-3.5 h-3.5 rounded-full bg-white border border-slate-300 ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                            onclick="switchColor('product-3', 'images/SKC/white.jpg', 'white', this)">
+                                    </button>
+                                </div>
+                            </div>
+
+                            <h3 class="text-base font-bold text-slate-950 group-hover:text-emerald-800 transition-colors mb-2 leading-snug">
+                                Multifunctional Countertop Sink Caddy
+                            </h3>
+                            <p class="text-xs text-slate-400 mb-6 leading-relaxed line-clamp-2">
+                                Integrated automatic drainboard setup keeping dishwash soaps, brushes, sponges, and towels beautifully ventilated and completely bone-dry.
+                            </p>
+                            <div class="mt-auto">
+                                <a href="https://www.amazon.com/dp/B0FSKPZRJV?th=1" target="_blank" rel="noopener noreferrer"
+                                   class="w-full inline-flex items-center justify-center px-4 py-2.5 border border-transparent text-xs font-bold rounded-full text-white bg-emerald-950 hover:bg-emerald-800 transition-colors shadow-2xs">
+                                     Buy on Amazon
+                                     <i data-lucide="external-link" class="w-3.5 h-3.5 ml-1.5 opacity-80"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="bg-white rounded-2xl border border-slate-100 hover:border-slate-200 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col overflow-hidden group">
+                        <div class="aspect-square bg-white relative flex items-center justify-center p-6 border-b border-slate-100 overflow-hidden">
+                            <img id="product-3-img" 
+                                 src="images/SKC/black.jpg" 
+                                 alt="Multifunctional Countertop Sink Organizer" 
+                                 class="max-h-full max-w-full object-contain group-hover:scale-102 transition-transform duration-300">
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+                                    Color: <span id="product-3-color-text" class="text-slate-600 font-semibold">Chrome Silver</span>
+                                </span>
+                                <div class="flex space-x-1.5">
+                                    <button class="w-3.5 h-3.5 rounded-full bg-slate-900 border border-transparent ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                            onclick="switchColor('product-3', 'images/SKC/black.jpg', 'black', this)">
+                                    </button>
+                                    <button class="w-3.5 h-3.5 rounded-full bg-zinc-400 border border-slate-300 ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                            onclick="switchColor('product-3', 'images/SKC/silver.jpg', 'silver', this)">
+                                    </button>
+                                    <button class="w-3.5 h-3.5 rounded-full bg-green border border-transparent ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                            onclick="switchColor('product-3', 'images/SKC/green.jpg', 'green', this)">
+                                    </button>
+                                    <button class="w-3.5 h-3.5 rounded-full bg-brown border border-transparent ring-2 ring-offset-1 ring-emerald-600 cursor-pointer transition-all focus:outline-none"
+                                            onclick="switchColor('product-3', 'images/SKC/brown.jpg', 'brown', this)">
+                                    </button>
+                                    <button class="w-3.5 h-3.5 rounded-full bg-blue-600 border border-transparent ring-1 ring-offset-1 ring-transparent cursor-pointer transition-all focus:outline-none"
+                                            onclick="switchColor('product-3', 'images/SKC/white.jpg', 'white', this)">
+                                    </button>
+                                </div>
+                            </div>
+
+                            <h3 class="text-base font-bold text-slate-950 group-hover:text-emerald-800 transition-colors mb-2 leading-snug">
+                                Multifunctional Countertop Sink Organizer
+                            </h3>
+                            <p class="text-xs text-slate-400 mb-6 leading-relaxed line-clamp-2">
+                                Integrated automatic drainboard setup keeping dishwash soaps, brushes, sponges, and towels beautifully ventilated and completely bone-dry.
+                            </p>
+                            <div class="mt-auto">
+                                <a href="https://www.amazon.com" target="_blank" rel="noopener noreferrer"
+                                   class="w-full inline-flex items-center justify-center px-4 py-2.5 border border-transparent text-xs font-bold rounded-full text-white bg-emerald-950 hover:bg-emerald-800 transition-colors shadow-2xs">
+                                     Buy on Amazon
+                                     <i data-lucide="external-link" class="w-3.5 h-3.5 ml-1.5 opacity-80"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div> -->
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-950 text-slate-400 text-sm mt-auto border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-12">
+                
+                <div class="md:col-span-5 space-y-4">
+                    <span class="text-xl font-extrabold text-white tracking-tight">Saydear<span class="text-emerald-500">.</span></span>
+                    <p class="text-xs leading-relaxed text-slate-400 max-w-sm">
+                        Dedicated to blending structural stability with minimalist lines to craft durable, premium home organization essentials worldwide.
+                    </p>
+                </div>
+
+                <div class="md:col-span-4 grid grid-cols-2 gap-4">
+                    <div>
+                        <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">Explore</h4>
+                        <ul class="space-y-2 text-xs">
+                            <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+                            <li><a href="products.html" class="hover:text-white transition-colors">Products</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">Support</h4>
+                        <ul class="space-y-2 text-xs">
+                            <li><a href="community.html" class="hover:text-white transition-colors">Community</a></li>
+                            <li><a href="products.html#faq" class="hover:text-white transition-colors">FAQ</a></li>
+                            <li><a href="warranty.html" class="hover:text-white transition-colors">Warranty Registry</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="md:col-span-3 space-y-4">
+                    <h4 class="text-white font-bold text-xs uppercase tracking-wider">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="p-2 bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white rounded-full transition-colors" aria-label="Facebook">
+                            <i data-lucide="facebook" class="w-4 h-4"></i>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="p-2 bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white rounded-full transition-colors" aria-label="Instagram">
+                            <i data-lucide="instagram" class="w-4 h-4"></i>
+                        </a>
+                        <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="p-2 bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white rounded-full transition-colors" aria-label="TikTok">
+                            <i data-lucide="music" class="w-4 h-4"></i>
+                        </a>
+                        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="p-2 bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white rounded-full transition-colors" aria-label="YouTube">
+                            <i data-lucide="youtube" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pt-8 border-t border-slate-900 text-center space-y-3">
+                <p class="text-xs text-slate-500">&copy; 2026 Saydear. All rights reserved.</p>
+                <p class="text-[10px] text-slate-600 max-w-2xl mx-auto leading-normal tracking-wide">
+                    Privacy & Data Security: We deeply value your privacy. Any personal details submitted via our ambassador application or newsletter subscription are strictly used for brand communication and reward distribution. We never sell, rent, or share your data with unauthorized third parties. By submitting, you agree to our standard data handling practices.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                menuIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            }
+        });
+
+        function switchColor(productId, imgUrl, colorName, element) {
+            const targetImg = document.getElementById(`${productId}-img`);
+            if (targetImg) targetImg.src = imgUrl;
+
+            const targetText = document.getElementById(`${productId}-color-text`);
+            if (targetText) targetText.textContent = colorName;
+
+            const siblingButtons = element.parentNode.querySelectorAll('button');
+            siblingButtons.forEach(btn => {
+                btn.classList.remove('ring-2', 'ring-emerald-600');
+                btn.classList.add('ring-1', 'ring-transparent');
+            });
+            element.classList.remove('ring-1', 'ring-transparent');
+            element.classList.add('ring-2', 'ring-emerald-600');
+        }
+    </script>
+</body>
+</html>
