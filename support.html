@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saydear | Support & Creator Experience Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#020617',     /* 承袭页脚的极暗夜空色 */
+                            card: '#0f172a',     /* 块级元素背景色 */
+                            accent: '#10b981',   /* Saydear 专属翡翠绿 */
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-brand-dark text-slate-200 font-sans min-h-screen flex flex-col antialiased">
+
+    <header class="border-b border-slate-900 bg-brand-dark/80 backdrop-blur sticky top-0 z-50 py-4 px-6">
+        <div class="max-w-5xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-xl font-extrabold text-white tracking-tight inline-block leading-none">
+                Saydear<span class="text-brand-accent">.</span>
+            </a>
+            <a href="mailto:support@saydear-us.com" class="text-xs text-slate-400 hover:text-white transition-colors">
+                Contact Support
+            </a>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-2xl mx-auto w-full px-4 py-8 space-y-8">
+
+        <section id="manual-section" class="bg-brand-card border border-slate-800 rounded-2xl p-6 shadow-xl space-y-4">
+            <div class="space-y-1">
+                <span class="text-[10px] uppercase tracking-wider font-bold text-brand-accent px-2 py-0.5 bg-brand-accent/10 rounded-full inline-block">
+                    Official Support
+                </span>
+                <h1 id="product-title" class="text-xl font-bold text-white tracking-tight pt-1">
+                    Loading your digital manual...
+                </h1>
+            </div>
+
+            <div id="media-container" class="w-full min-h-[300px] bg-slate-950 rounded-xl border border-slate-800 flex flex-col items-center justify-center p-6 text-center space-y-4 overflow-hidden">
+                </div>
+        </section>
+
+        <section class="bg-brand-card border border-slate-800 rounded-2xl p-6 shadow-xl space-y-6 relative overflow-hidden">
+            <div class="absolute -top-12 -right-12 w-32 height-32 bg-brand-accent/10 blur-3xl pointer-events-none"></div>
+
+            <div class="space-y-2 text-center md:text-left">
+                <h2 class="text-lg font-bold text-white tracking-tight flex items-center justify-center md:justify-start gap-2">
+                    <span>🎁</span> Join Our "Aesthetic Home" Program
+                </h2>
+                <p class="text-xs text-slate-400 leading-relaxed max-w-md">
+                    Love your new organized space? Share a photo or quick video of your Saydear setup, join our creator community, and claim your rewards!
+                </p>
+                <div class="text-xs font-semibold text-brand-accent pt-1">
+                    👉 Get a $10 Gift Card or a FREE New Item!
+                </div>
+            </div>
+
+            <form id="creator-form" action="https://formspree.io/f/xnjrjrnk" method="POST" class="space-y-4 pt-2">
+    
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="space-y-1.5">
+                        <label class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">First Name *</label>
+                        <input type="text" name="first_name" required placeholder="John" 
+                               class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2.5 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-brand-accent transition-colors">
+                    </div>
+                    <div class="space-y-1.5">
+                        <label class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">Last Name *</label>
+                        <input type="text" name="last_name" required placeholder="Doe" 
+                               class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2.5 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-brand-accent transition-colors">
+                    </div>
+                </div>
+            
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="space-y-1.5">
+                        <label class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">Amazon Order ID *</label>
+                        <input type="text" name="order_id" required placeholder="e.g. 111-1234567-1234567" 
+                               class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2.5 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-brand-accent transition-colors">
+                    </div>
+                    <div class="space-y-1.5">
+                        <label class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">Email Address *</label>
+                        <input type="email" name="email" required placeholder="Where should we send your reward?" 
+                               class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2.5 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-brand-accent transition-colors">
+                    </div>
+                </div>
+            
+                <div class="space-y-1.5">
+                    <label class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">Social Media Handle (Optional)</label>
+                    <input type="text" name="social_handle" placeholder="e.g. @yourinstagram / @yourtiktok" 
+                           class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2.5 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-brand-accent transition-colors">
+                </div>
+            
+                <button type="submit" class="w-full bg-brand-accent hover:bg-emerald-600 text-brand-dark font-bold text-xs uppercase tracking-wider py-3 rounded-lg shadow-lg shadow-brand-accent/10 transition-colors duration-200">
+                    Apply & Claim My $10 Reward
+                </button>
+            </form>
+
+            <div id="form-success" class="hidden text-center py-6 space-y-2">
+                <div class="text-2xl text-brand-accent">✓ Application Received!</div>
+                <p class="text-xs text-slate-400">Our team will verify your Order ID within 24-48 hours and email your reward details. Thank you for joining the Saydear family!</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-slate-900 py-6 px-4 bg-brand-dark text-center space-y-2">
+        <p class="text-[11px] text-slate-500">&copy; 2026 Saydear US. All Rights Reserved.</p>
+        <p class="text-[9px] text-slate-600 max-w-xl mx-auto leading-normal">
+            Data Privacy: Information submitted is encrypted and strictly used for warranty validation and ambassador communication. We respect your inbox privacy.
+        </p>
+    </footer>
+
+    <script>
+        // 📥 30款产品的说明书动态数据库清单
+        // 后续你有新SKU，直接按这个格式在下面往下加行即可，完全不需要改动上面的HTML骨架！
+        const PRODUCT_DATABASE = {
+            "jt001": {
+                name: "elegant jewelry holder (Model: SDJT001)",
+                pdfUrl: "manuals/jt001-user-manual.pdf",
+                hasVideo: false,
+                videoUrl: ""
+            },
+            "jt002": {
+                name: "elegant jewelry holder (Model: SDJT002)",
+                pdfUrl: "manuals/jt002-user-manual.pdf",
+                hasVideo: false,
+                videoUrl: ""
+            },
+            "jt003": {
+                name: "elegant jewelry holder (Model: SDJT003)",
+                pdfUrl: "manuals/jt003-user-manual.pdf",
+                hasVideo: false,
+                videoUrl: ""
+            },
+            "sc001": {
+                name: "shower caddy (Model: SC001)",
+                pdfUrl: "manuals/sc01-user-manual.pdf",
+                hasVideo: false,
+                videoUrl: ""
+            },
+            // "temp": {
+            //     name: "Luxury Jewelry Holder Organizer (Model: temp)",
+            //     pdfUrl: "manuals/jewelry-holder-sd02.pdf",
+            //     hasVideo: true, // 如果未来有了视频，改成 true 
+            //     videoUrl: "https://www.youtube.com/embed/xxxxxx" // 填入视频嵌入链接
+            // },
+            "us001": {
+                name: "under sink organizer (Model: US001)",
+                pdfUrl: "manuals/us001-user-manual.pdf",
+                hasVideo: false,
+                videoUrl: ""
+            },
+            "us01v2": {
+                name: "under sink organizer (Model: US01V2)",
+                pdfUrl: "manuals/us01v2-user-manual.pdf",
+                hasVideo: false,
+                videoUrl: ""
+            },
+            "us002v": {
+                name: "under sink organizer (Model: US002V)",
+                pdfUrl: "manuals/us002v-user-manual.pdf",
+                hasVideo: false,
+                videoUrl: ""
+            }
+            // 💡 随品类增加，直接在这里无限复制追加...
+        };
+
+        // 兜底配置：如果用户直接输入网址，或者参数输错了，显示的内容
+        const DEFAULT_PRODUCT = {
+            name: "Saydear Premium Home Product",
+            pdfUrl: "manuals/general-guide.pdf", // 可以放一份通用的品牌售后手册
+            hasVideo: false
+        };
+
+        // 🔍 解析 URL 参数的核心函数
+        function getSkuFromUrl() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('model') ? params.get('model').toLowerCase().trim() : null;
+        }
+
+        // ⚡ 页面动态渲染器
+        function renderPage() {
+            const sku = getSkuFromUrl();
+            const productTitleEl = document.getElementById('product-title');
+            const mediaContainerEl = document.getElementById('media-container');
+
+            let currentProduct = PRODUCT_DATABASE[sku];
+
+            // 如果找不到对应的SKU，采用兜底通用提示
+            if (!currentProduct) {
+                currentProduct = DEFAULT_PRODUCT;
+            }
+
+            // 1. 渲染产品标题
+            productTitleEl.textContent = `Installation Guide for ${currentProduct.name}`;
+
+            // 2. 根据产品配置，动态渲染媒体展示区域
+            mediaContainerEl.innerHTML = ''; // 清空加载状态
+
+            if (currentProduct.hasVideo && currentProduct.videoUrl) {
+                // 如果有视频（未来升级场景）：直接渲染嵌入式视频播放窗 + PDF 下载按钮
+                mediaContainerEl.innerHTML = `
+                    <div class="w-full aspect-video rounded-lg overflow-hidden border border-slate-800">
+                        <iframe class="w-full h-full" src="${currentProduct.videoUrl}" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="pt-2">
+                        <a href="${currentProduct.pdfUrl}" target="_blank" class="text-xs text-brand-accent hover:underline inline-flex items-center gap-1 font-medium">
+                            📁 Prefer paper? Download PDF Manual Instead
+                        </a>
+                    </div>
+                `;
+            } else {
+                // 当前阶段（纯PDF场景）：渲染一个精美的移动端专属阅读器外壳与下载组合按钮
+                mediaContainerEl.innerHTML = `
+                    <div class="p-4 bg-slate-900 rounded-full text-brand-accent text-xl mb-1">📄</div>
+                    <div class="space-y-1">
+                        <h3 class="text-sm font-semibold text-white">Interactive PDF Manual Ready</h3>
+                        <p class="text-xs text-slate-500 max-w-xs mx-auto">Tap below to view the step-by-step assembly guide optimized for your smartphone.</p>
+                    </div>
+                    <div class="pt-2 w-full max-w-xs mx-auto">
+                        <a href="${currentProduct.pdfUrl}" target="_blank" class="block w-full bg-slate-800 hover:bg-slate-700 text-white font-medium text-xs py-2.5 rounded-lg border border-slate-700 transition-colors">
+                            Open Digital Manual (PDF)
+                        </a>
+                    </div>
+                `;
+            }
+        }
+
+        // 📮 处理表单提交逻辑 (完美对接 Formspree 并实现无刷新成功提示)
+        document.getElementById('creator-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // 拦截原生跳转
+            
+            const form = this;
+            const data = new FormData(form);
+            const successEl = document.getElementById('form-success');
+            
+            // 使用 fetch 异步发送数据到 Formspree
+            fetch(form.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    // 提交成功：隐藏表单，展示我们精美的成功提示框
+                    form.classList.add('hidden');
+                    successEl.classList.remove('hidden');
+                } else {
+                    alert("Oops! There was a problem submitting your form. Please try again.");
+                }
+            }).catch(error => {
+                alert("Network error. Please review your connection and try again.");
+            });
+        });
+
+        // 执行初始化渲染
+        window.addEventListener('DOMContentLoaded', renderPage);
+    </script>
+</body>
+</html>
