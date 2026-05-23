@@ -244,19 +244,35 @@
                         </div>
                     `;
                 } else {
+                    // 在线预览 PDF：移动端高 300px 确保更好的首屏可见度，桌面端 sm: 高 500px
                     mediaContainerEl.innerHTML = `
-                        <div class="p-4 bg-slate-900 rounded-full text-brand-accent text-xl mb-1">📄</div>
-                        <div class="space-y-1">
-                            <h3 class="text-sm font-semibold text-white">Interactive PDF Manual Ready</h3>
-                            <p class="text-xs text-slate-500 max-w-xs mx-auto">Tap below to view the step-by-step assembly guide optimized for your smartphone.</p>
+                        <div class="w-full h-[300px] sm:h-[500px] rounded-lg overflow-hidden border border-slate-800 bg-slate-900">
+                            <iframe 
+                                class="w-full h-full" 
+                                src="${currentProduct.pdfUrl}#toolbar=0&navpanes=0&scrollbar=1" 
+                                type="application/pdf"
+                                frameborder="0">
+                            </iframe>
                         </div>
-                        <div class="pt-2 w-full max-w-xs mx-auto">
-                            <a href="${currentProduct.pdfUrl}" target="_blank" class="block w-full bg-slate-800 hover:bg-slate-700 text-white font-medium text-xs py-2.5 rounded-lg border border-slate-700 transition-colors">
-                                Open Digital Manual (PDF)
+                        <div class="pt-3 w-full flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-slate-900 mt-2">
+                            <a href="${currentProduct.pdfUrl}" target="_blank" class="text-xs text-brand-accent hover:underline inline-flex items-center gap-1 font-medium">
+                                📁 Open Fullscreen / Download PDF
                             </a>
+                            <button id="back-to-locator" class="text-xs text-slate-500 hover:text-white transition-colors flex items-center gap-1 bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-800">
+                                ↩ Change Model
+                            </button>
                         </div>
                     `;
                 }
+
+                // 绑定“返回重新选择”按钮的点击事件
+                document.getElementById('back-to-locator').addEventListener('click', function() {
+                    // 清除浏览器地址栏的 ?model= 参数
+                    const newUrl = `${window.location.protocol}//${window.location.host}${window.location.pathname}`;
+                    window.history.pushState({ path: newUrl }, '', newUrl);
+                    // 重新执行渲染，由于此时没有参数，会自然退回到下拉选择框界面
+                    renderPage();
+                });
             } else {
                 /* ====================================================
                    情况 B：核心升级！参数丢失、或者输入了错误/不存在的参数
