@@ -28,7 +28,7 @@
             <a href="index.html" class="text-xl font-extrabold text-white tracking-tight inline-block leading-none">
                 Saydear<span class="text-brand-accent">.</span>
             </a>
-            <a href="mailto:saydear_service@outlook.com" class="text-xs text-slate-400 hover:text-white transition-colors">
+            <a href="mailto:support@saydear-us.com" class="text-xs text-slate-400 hover:text-white transition-colors">
                 Contact Support
             </a>
         </div>
@@ -50,107 +50,63 @@
             </div>
         </section>
 
-        <!-- 🎁 完美自适应修复版：优化移动端绿字居中，精简提交按钮文字 -->
-        <section class="bg-brand-card border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-xl space-y-6 relative overflow-hidden text-left">
+        <section class="bg-brand-card border border-slate-800 rounded-2xl p-6 shadow-xl space-y-6 relative overflow-hidden">
             <div class="absolute -top-12 -right-12 w-32 height-32 bg-brand-accent/10 blur-3xl pointer-events-none"></div>
 
-            <!-- 顶部标题区：彻底修复移动端小绿字歪斜与对齐问题 -->
-            <div class="space-y-2 text-center sm:text-left">
-                <h2 class="text-lg font-bold text-white tracking-tight flex items-center justify-center sm:justify-start gap-2">
+            <div class="space-y-2 text-center md:text-left">
+                <h2 class="text-lg font-bold text-white tracking-tight flex items-center justify-center md:justify-start gap-2">
                     <span>🎁</span> Join Our "Aesthetic Home" Program
                 </h2>
-                <!-- 🌟 修复：利用 justify-center / sm:justify-start 确保两端都绝对完美居中/靠左 -->
-                <div class="text-xs font-semibold text-brand-accent flex items-start justify-center sm:justify-start gap-1.5 px-2 sm:px-0">
-                    <span class="shrink-0">👉</span>
-                    <span class="leading-relaxed text-center sm:text-left">Win a $5 - $20 Amazon Gift Card or a FREE New Item!</span>
-                </div>
-            </div>
-                
-            <!-- 📢 核心机制框 -->
-            <div class="p-4 sm:p-5 bg-slate-950 border border-slate-800 rounded-xl space-y-5 text-left">
-                <div>
-                    <p class="text-[11px] uppercase tracking-wider font-bold text-amber-500 mb-3 flex items-center gap-1.5">
-                        <span>🌟</span> Creation Reward Tiers:
-                    </p>
-                    <ul class="text-xs space-y-3 text-slate-400">
-                        <li class="grid grid-cols-[auto_1fr] gap-2.5 items-start">
-                            <span class="text-base leading-none shrink-0 text-center w-5">🥉</span>
-                            <div class="leading-relaxed"><span class="text-white font-semibold">Tier 1 ($5 Gift Card):</span> For standard photo shares or quick feedback.</div>
-                        </li>
-                        <li class="grid grid-cols-[auto_1fr] gap-2.5 items-start">
-                            <span class="text-base leading-none shrink-0 text-center w-5">🥈</span>
-                            <div class="leading-relaxed"><span class="text-white font-semibold">Tier 2 ($10 Gift Card):</span> For multiple aesthetic photos & detailed setup display.</div>
-                        </li>
-                        <li class="grid grid-cols-[auto_1fr] gap-2.5 items-start">
-                            <span class="text-base leading-none shrink-0 text-center w-5">🥇</span>
-                            <div class="leading-relaxed"><span class="text-white font-semibold">Tier 3 ($20 Card / Free Item):</span> For high-quality unboxing videos or home makeover Vlogs!</div>
-                        </li>
-                    </ul>
-                </div>
-                
-                <!-- 分割线 -->
-                <div class="border-t border-slate-900 pt-4">
-                    <p class="text-[11px] uppercase tracking-wider font-bold text-brand-accent mb-3 flex items-center gap-1.5">
-                        <span>📋</span> How to Claim:
-                    </p>
-                    <ol class="text-xs text-slate-400 space-y-3">
-                        <li class="grid grid-cols-[auto_1fr] gap-2.5 items-start">
-                            <span class="text-brand-accent font-bold text-sm leading-none shrink-0 text-center w-5">1.</span>
-                            <div class="leading-relaxed">Share a photo/video of your Saydear setup on Amazon or social media (IG, TikTok, FB).</div>
-                        </li>
-                        <li class="grid grid-cols-[auto_1fr] gap-2.5 items-start">
-                            <span class="text-brand-accent font-bold text-sm leading-none shrink-0 text-center w-5">2.</span>
-                            <div class="leading-relaxed">Fill out the form below with your Order ID and the link/proof of your post.</div>
-                        </li>
-                    </ol>
+                <p class="text-xs text-slate-400 leading-relaxed max-w-md">
+                    Love your new organized space? Share a photo or quick video of your Saydear setup, join our creator community, and claim your rewards!
+                </p>
+                <div class="text-xs font-semibold text-brand-accent pt-1">
+                    👉 Get a $10 Gift Card or a FREE New Item!
                 </div>
             </div>
 
-            <!-- 表单区域 -->
-            <form id="creator-form" action="https://formspree.io/f/xnjrjrnk" method="POST" class="space-y-4 pt-1">
+            <form id="creator-form" action="https://formspree.io/f/xnjrjrnk" method="POST" class="space-y-4 pt-2">
     
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="space-y-1.5">
-                        <label class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold pl-0.5">First Name *</label>
+                        <label class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">First Name *</label>
                         <input type="text" name="first_name" required placeholder="John" 
-                               class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2.5 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-brand-accent transition-colors appearance-none">
+                               class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2.5 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-brand-accent transition-colors">
                     </div>
                     <div class="space-y-1.5">
-                        <label class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold pl-0.5">Last Name *</label>
+                        <label class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">Last Name *</label>
                         <input type="text" name="last_name" required placeholder="Doe" 
-                               class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2.5 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-brand-accent transition-colors appearance-none">
+                               class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2.5 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-brand-accent transition-colors">
                     </div>
                 </div>
             
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="space-y-1.5">
-                        <label class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold pl-0.5">Amazon Order ID *</label>
+                        <label class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">Amazon Order ID *</label>
                         <input type="text" name="order_id" required placeholder="e.g. 111-1234567-1234567" 
-                               class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2.5 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-brand-accent transition-colors appearance-none">
+                               class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2.5 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-brand-accent transition-colors">
                     </div>
                     <div class="space-y-1.5">
-                        <label class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold pl-0.5">Email Address *</label>
+                        <label class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">Email Address *</label>
                         <input type="email" name="email" required placeholder="Where should we send your reward?" 
-                               class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2.5 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-brand-accent transition-colors appearance-none">
+                               class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2.5 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-brand-accent transition-colors">
                     </div>
                 </div>
             
                 <div class="space-y-1.5">
-                    <label class="text-[11px] uppercase tracking-wider text-amber-500 font-bold pl-0.5">Your Shared Post Link / Social Handle *</label>
-                    <input type="text" name="shared_proof" required placeholder="e.g. TikTok link, IG URL, or 'Posted on Amazon under JohnD'" 
-                           class="w-full bg-slate-950 border border-amber-500/30 rounded-lg px-3 py-2.5 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-brand-accent transition-colors appearance-none">
-                    <p class="text-[10px] text-slate-500 leading-normal pl-0.5">Please paste your post URL or specify where you shared it so our team can evaluate the creation level and send your corresponding card!</p>
+                    <label class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">Social Media Handle (Optional)</label>
+                    <input type="text" name="social_handle" placeholder="e.g. @yourinstagram / @yourtiktok" 
+                           class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2.5 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-brand-accent transition-colors">
                 </div>
             
-                <!-- 🌟 修改：按钮文字更精简，改为 Apply & Claim My Reward -->
-                <button type="submit" class="w-full bg-brand-accent hover:bg-emerald-600 text-brand-dark font-bold text-xs uppercase tracking-wider py-3 rounded-lg shadow-lg shadow-brand-accent/10 transition-colors duration-200 mt-2">
-                    Apply & Claim My Reward
+                <button type="submit" class="w-full bg-brand-accent hover:bg-emerald-600 text-brand-dark font-bold text-xs uppercase tracking-wider py-3 rounded-lg shadow-lg shadow-brand-accent/10 transition-colors duration-200">
+                    Apply & Claim My $10 Reward
                 </button>
             </form>
 
             <div id="form-success" class="hidden text-center py-6 space-y-2">
-                <div class="text-2xl text-brand-accent">✓ Submission Received!</div>
-                <p class="text-xs text-slate-400 leading-relaxed">Our crew will verify your post and evaluate the creation level within 24-48 hours. Your customized Amazon Gift Card code will be sent straight to your email!</p>
+                <div class="text-2xl text-brand-accent">✓ Application Received!</div>
+                <p class="text-xs text-slate-400">Our team will verify your Order ID within 24-48 hours and email your reward details. Thank you for joining the Saydear family!</p>
             </div>
         </section>
 
@@ -185,25 +141,25 @@
                 videoUrl: ""
             },
             "sc001": {
-                name: "shower caddy (Model: SDSC001)",
+                name: "shower caddy (Model: SC001)",
                 pdfUrl: "manuals/sc01-user-manual.pdf",
                 hasVideo: false,
                 videoUrl: ""
             },
             "us001": {
-                name: "under sink organizer (Model: SDUS001)",
+                name: "under sink organizer (Model: US001)",
                 pdfUrl: "manuals/us001-user-manual.pdf",
                 hasVideo: false,
                 videoUrl: ""
             },
             "us01v2": {
-                name: "under sink organizer (Model: SDUS01V2)",
+                name: "under sink organizer (Model: US01V2)",
                 pdfUrl: "manuals/us01v2-user-manual.pdf",
                 hasVideo: false,
                 videoUrl: ""
             },
             "us002v": {
-                name: "under sink organizer (Model: SDUS002V)",
+                name: "under sink organizer (Model: US002V)",
                 pdfUrl: "manuals/us002v-user-manual.pdf",
                 hasVideo: false,
                 videoUrl: ""

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saydear Final Insert Card System</title>
+    <!-- 引入 Tailwind CSS 让高级暗黑调与翡翠绿样式生效 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0f172a;
+        }
+        /* 针对打印进行优化 */
+        @media print {
+            body { background-color: #ffffff; }
+            .card-page { page-break-after: always; box-shadow: none !important; border: 1px solid #e2e8f0 !important; }
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body class="py-12 flex flex-col items-center justify-center gap-12 min-h-screen">
+
+    <!-- 顶部状态提示（仅在网页中显示，打印时自动隐藏） -->
+    <div class="no-print text-center space-y-2 max-w-md px-4">
+        <h2 class="text-slate-200 font-bold text-lg">✨ Saydear 售后卡片（最终版）</h2>
+        <!-- <p class="text-xs text-slate-400 leading-relaxed">
+            卡片已彻底剔除版权杂质文本，回归极致留白与高端质感。版权信息已规划至扫码后的落地页脚。
+        </p> -->
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 📝 1. 卡片正面（FRONT SIDE）- 强调品牌归属感 -->
+    <!-- ========================================== -->
+    <div class="card-page w-[600px] h-[400px] bg-[#020617] border border-slate-800 rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden text-center text-white shadow-2xl">
+        <!-- 装饰背景微光 -->
+        <div class="absolute -top-24 -left-24 w-48 h-48 bg-emerald-500/10 blur-3xl pointer-events-none rounded-full"></div>
+        
+        <!-- 右上角小角标 -->
+        <div class="absolute top-6 right-8 text-[9px] uppercase tracking-[0.25em] font-bold text-slate-500">
+            Official VIP Invitation
+        </div>
+
+        <!-- 品牌大 Logo -->
+        <div class="text-2xl font-black tracking-[0.25em] text-white pt-6 select-all">
+            SAYDEAR.
+        </div>
+
+        <!-- 标题紧凑化 + 利益卡片化 + 保留经典分割线 -->
+        <div class="my-auto flex flex-col items-center">
+            
+            <!-- 1. 标题组合拳 -->
+            <div class="space-y-1 mb-5">
+                <h3 class="text-xs font-semibold uppercase tracking-widest text-amber-500">
+                    Tired of the Mess? We’ve Got You Covered!
+                </h3>
+                <h1 class="text-xl font-extrabold tracking-tight text-white px-4 leading-snug">
+                    Welcome to the <span class="text-emerald-400">"Aesthetic Home"</span> Club!
+                </h1>
+            </div>
+            
+            <!-- 2. 核心利益卡片化 -->
+            <div class="bg-emerald-500/5 border border-emerald-500/10 rounded-xl px-6 py-2.5 mb-3 shadow-inner">
+                <p class="text-sm font-bold text-emerald-400 tracking-wide px-2">
+                    Scan to Join Us & Get a $5 - $20 Gift Card or Free Item!
+                </p>
+            </div>
+            
+            <!-- 3. 经典分割线 -->
+            <div class="w-16 h-[1.5px] bg-emerald-500/20 mx-auto my-3"></div>
+            
+            <!-- 4. 底部情怀长文本 -->
+            <p class="text-[11px] text-slate-400 max-w-[440px] mx-auto leading-relaxed px-4">
+                We believe an organized home is a canvas for beautiful living. Join our premium creator community to showcase your unique space, unlock exclusive tier rewards, and co-design future arrivals with us.
+            </p>
+            
+        </div>
+
+        <!-- 底部环保与数字说明书倡议 -->
+        <div class="border-t border-slate-900 pt-4 flex items-center justify-center gap-2 text-slate-500 text-[10px] uppercase tracking-wider font-semibold">
+            <span class="text-emerald-500/70">🔧</span> 
+            <span>Eco-Friendly Initiative: Scan to access the full Digital Installation Guide.</span>
+        </div>
+    </div>
+
+
+    <!-- ========================================== -->
+    <!-- 📝 2. 卡片背面（BACK SIDE）- 完美比例，极致清爽 -->
+    <!-- ========================================== -->
+    <div class="card-page w-[600px] h-[400px] bg-[#020617] border border-slate-800 rounded-3xl p-8 flex font-sans text-white shadow-2xl relative overflow-hidden">
+        <!-- 装饰背景微光 -->
+        <div class="absolute -bottom-24 -right-24 w-48 h-48 bg-emerald-500/5 blur-3xl pointer-events-none rounded-full"></div>
+
+        <!-- 左侧区域：三大 VIP 尊享特权介绍 -->
+        <div class="w-[62%] h-full flex flex-col justify-between pr-4 text-left">
+            <div>
+                <div class="text-[9px] uppercase tracking-[0.2em] font-bold text-emerald-500 mb-4 flex items-center gap-1.5">
+                    <span class="text-sm leading-none">✦</span> Exclusive Perks
+                </div>
+                <h2 class="text-base font-extrabold text-white tracking-tight mb-5">
+                    Scan to Activate & Explore:
+                </h2>
+                
+                <!-- 特权条目列表 -->
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3">
+                        <span class="text-base leading-none shrink-0 mt-0.5">🛠️</span>
+                        <div class="space-y-0.5">
+                            <h4 class="text-xs font-bold text-slate-200">Instant Support & Protection</h4>
+                            <p class="text-[11px] text-slate-400 leading-relaxed">3D Step-by-Step Assembly Guide & 1-Year Extra Warranty.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-base leading-none shrink-0 mt-0.5">🎁</span>
+                        <div class="space-y-0.5">
+                            <h4 class="text-xs font-bold text-slate-200">VIP Exclusive Perks</h4>
+                            <p class="text-[11px] text-slate-400 leading-relaxed">Free testing for our upcoming arrivals & premium home organization solutions.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-base leading-none shrink-0 mt-0.5">💰</span>
+                        <div class="space-y-0.5">
+                            <h4 class="text-xs font-bold text-slate-200">Creator Creation Rewards</h4>
+                            <p class="text-[11px] text-slate-400 leading-relaxed">Share your home setup, join our community, and claim your rewards.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 底部官方服务渠道（单行极致清爽） -->
+            <div class="text-[9px] text-slate-500 font-bold tracking-wider uppercase">
+                Official Care: saydear_service@outlook.com
+            </div>
+        </div>
+
+        <!-- 右侧区域：智能专属二维码区域 -->
+        <div class="w-[38%] h-full border-l border-slate-900 flex flex-col justify-between items-center text-center pl-4">
+            <div class="w-full pt-4 flex flex-col items-center">
+                
+                <!-- 二维码美化包装器 -->
+                <div class="w-32 h-32 bg-slate-900/50 border border-slate-800/80 rounded-2xl p-2.5 flex items-center justify-center relative shadow-inner group">
+                    <div class="absolute top-2 left-2 w-3 h-3 border-t-2 border-l-2 border-emerald-500 rounded-tl-sm"></div>
+                    <div class="absolute top-2 right-2 w-3 h-3 border-t-2 border-r-2 border-emerald-500 rounded-tr-sm"></div>
+                    <div class="absolute bottom-2 left-2 w-3 h-3 border-b-2 border-l-2 border-emerald-500 rounded-bl-sm"></div>
+                    <div class="absolute bottom-2 right-2 w-3 h-3 border-b-2 border-r-2 border-emerald-500 rounded-tr-sm"></div>
+                    
+                    <div class="w-full h-full opacity-95 flex items-center justify-center bg-cover bg-center rounded-lg" style="background-image: url('images/qrcode/jt001.png');"></div>
+                </div>
+                
+                <div class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest mt-3 flex items-center gap-1 select-none">
+                    <span>👉</span> SCAN NOW
+                </div>
+            </div>
+
+            <!-- 二维码下方的兜底备用输入网址 -->
+            <div class="space-y-1.5 w-full pb-1">
+                <p class="text-[8px] text-slate-500 uppercase tracking-wider font-bold">Can't scan? Type URL below:</p>
+                <p class="text-[9px] text-slate-400 font-mono tracking-tight bg-slate-950 border border-slate-800 px-2 py-1 rounded-md select-all truncate w-full">
+                    saydear.besto.de5.net/support?
+                </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
