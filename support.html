@@ -245,18 +245,19 @@
                     `;
                 } else {
                     // 🌟 1. 统一使用标准的相对路径
-                    const relativePdfUrl = currentProduct.pdfUrl; // 比如 "manuals/jt001-user-manual.pdf"
+                    // const relativePdfUrl = currentProduct.pdfUrl; // 比如 "manuals/jt001-user-manual.pdf"
                     
                     // 🌟 2. 核心：viewer.html 位于 pdfjs/web/ 目录下，通过 ../../ 回退两层，就能完美、精准地指向根目录的 manuals
                     // 后面加上 &isFromApp=true 作为一个暗号，用来强制跳过安卓的跨域安全检查
-                    const pdfViewerUrl = `pdfjs/web/viewer.html?file=${encodeURIComponent('../../' + relativePdfUrl)}&isFromApp=true`;
+                    // const pdfViewerUrl = `pdfjs/web/viewer.html?file=${encodeURIComponent('../../' + relativePdfUrl)}&isFromApp=true`;
 
                     // 1. 获取绝对路径或相对根路径，确保 PDF.js 能够正确读取文件
+                    const absolutePdfUrl = '/' + currentProduct.pdfUrl;
                     // const absolutePdfUrl = window.location.origin + '/' + currentProduct.pdfUrl;
                     
                     // 2. 将 PDF 地址作为参数传递给本地部署的 viewer.html
                     // 并在参数中加入 #page=1 强制从第一页开始，以及使内置集成的移动端 UI 生效
-                    // const pdfViewerUrl = `pdfjs/web/viewer.html?file=${encodeURIComponent(absolutePdfUrl)}`;
+                    const pdfViewerUrl = `pdfjs/web/viewer.html?file=${encodeURIComponent(absolutePdfUrl)}`;
 
                     // 在线预览 PDF：自适应完美高度
                     mediaContainerEl.innerHTML = `
