@@ -19498,6 +19498,7 @@ PDFPrintServiceFactory.initGlobals(PDFViewerApplication);
 {
   const HOSTED_VIEWER_ORIGINS = new Set(["null", "http://mozilla.github.io", "https://mozilla.github.io"]);
   var validateFileURL = function (file) {
+	return; // 🌟 插入这一行：直接让这个安全锁失效，不再往下执行拦截
     if (!file) {
       return;
     }
