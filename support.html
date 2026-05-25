@@ -243,14 +243,12 @@
                             </a>
                         </div>
                     `;
-
                 } else {
                     // 🌟 1. 判断是否为安卓系统
                     const isAndroid = /Android/i.test(navigator.userAgent);
                     
                     // 🌟 2. 严格生成无多余斜杠的、干净的完全绝对路径
                     const absolutePdfUrl = window.location.origin + '/' + currentProduct.pdfUrl; 
-                    // 拼接后形如：https://saydear.besto.de5.net/manuals/jt001.pdf
 
                     // 🌟 3. 根据系统分流生成最合适的 iframeSrc 预览链接
                     let iframeSrc = '';
@@ -283,46 +281,7 @@
                             </button>
                         </div>
                     `;
-                }
-                    
-                // } else {
-                //     // 🌟 1. 统一使用标准的相对路径
-                //     // const relativePdfUrl = currentProduct.pdfUrl; // 比如 "manuals/jt001-user-manual.pdf"
-                    
-                //     // 🌟 2. 核心：viewer.html 位于 pdfjs/web/ 目录下，通过 ../../ 回退两层，就能完美、精准地指向根目录的 manuals
-                //     // 后面加上 &isFromApp=true 作为一个暗号，用来强制跳过安卓的跨域安全检查
-                //     // const pdfViewerUrl = `pdfjs/web/viewer.html?file=${encodeURIComponent('../../' + relativePdfUrl)}&isFromApp=true`;
-
-                //     // 1. 获取绝对路径或相对根路径，确保 PDF.js 能够正确读取文件
-                //     // const absolutePdfUrl = '/' + currentProduct.pdfUrl;
-                //     const absolutePdfUrl = window.location.origin + '/' + currentProduct.pdfUrl;
-                    
-                //     // 2. 将 PDF 地址作为参数传递给本地部署的 viewer.html
-                //     // 并在参数中加入 #page=1 强制从第一页开始，以及使内置集成的移动端 UI 生效
-                //     // const pdfViewerUrl = `pdfjs/web/viewer.html?file=${encodeURIComponent(absolutePdfUrl)}`;
-                //     const pdfViewerUrl = `pdfjs/web/viewer.html?file=${absolutePdfUrl}`;
-
-                //     // 在线预览 PDF：自适应完美高度
-                //     mediaContainerEl.innerHTML = `
-                //         <div class="w-full h-[380px] sm:h-[550px] rounded-lg overflow-hidden border border-slate-800 bg-slate-900 relative">
-                //             <iframe 
-                //                 class="w-full h-full" 
-                //                 src="${pdfViewerUrl}" 
-                //                 frameborder="0"
-                //                 allowfullscreen
-                //                 webkitallowfullscreen>
-                //             </iframe>
-                //         </div>
-                //         <div class="pt-3 w-full flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-slate-900 mt-2">
-                //             <a href="${currentProduct.pdfUrl}" target="_blank" class="text-xs text-brand-accent hover:underline inline-flex items-center gap-1 font-medium">
-                //                 📁 Open Fullscreen / Download PDF
-                //             </a>
-                //             <button id="back-to-locator" class="text-xs text-slate-500 hover:text-white transition-colors flex items-center gap-1 bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-800">
-                //                 ↩ Change Model
-                //             </button>
-                //         </div>
-                //     `;
-                // }       
+                }       
 
                 // 绑定“返回重新选择”按钮的点击事件
                 document.getElementById('back-to-locator').addEventListener('click', function() {
