@@ -258,7 +258,7 @@
                     // 2. 将 PDF 地址作为参数传递给本地部署的 viewer.html
                     // 并在参数中加入 #page=1 强制从第一页开始，以及使内置集成的移动端 UI 生效
                     // const pdfViewerUrl = `pdfjs/web/viewer.html?file=${encodeURIComponent(absolutePdfUrl)}`;
-                    const pdfViewerUrl = `pdfjs/web/viewer.html?file=/${absolutePdfUrl}`;
+                    const pdfViewerUrl = `pdfjs/web/viewer.html?file=${absolutePdfUrl}`;
 
                     // 在线预览 PDF：自适应完美高度
                     mediaContainerEl.innerHTML = `
