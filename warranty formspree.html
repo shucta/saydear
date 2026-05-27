@@ -4,13 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Warranty Registration & Support | Saydear</title>
-    <link class="flex-shrink-0" rel="icon" href="images/favicon/favicon.png" type="image/png">
-    <!-- 引入 Tailwind CSS 4 -->
+    <link rel="icon" href="images/favicon/favicon.png" type="image/png">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- 引入 Lucide 图标库 -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- 引入 Supabase 官方前端 SDK -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
@@ -41,8 +37,8 @@
                 <div class="hidden md:flex items-center">
                     <a href="https://www.amazon.com/stores/Saydear/page/A23476AC-341C-42B8-9F1D-443835DB5297" target="_blank" rel="noopener" 
                        class="inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-sm font-semibold rounded-full text-white bg-emerald-950 hover:bg-emerald-800 transition-all duration-200 shadow-xs">
-                        Shop on Amazon
-                        <i data-lucide="external-link" class="w-4 h-4 ml-1.5 opacity-80"></i>
+                       Shop on Amazon
+                       <i data-lucide="external-link" class="w-4 h-4 ml-1.5 opacity-80"></i>
                     </a>
                 </div>
 
@@ -65,8 +61,8 @@
                 <div class="pt-4 px-3">
                     <a href="https://www.amazon.com/stores/Saydear/page/A23476AC-341C-42B8-9F1D-443835DB5297" target="_blank" rel="noopener" 
                        class="w-full inline-flex items-center justify-center px-4 py-3 border border-transparent rounded-full text-white bg-emerald-950 font-semibold shadow-xs text-center">
-                        Shop on Amazon
-                        <i data-lucide="external-link" class="w-4 h-4 ml-1.5 opacity-80"></i>
+                       Shop on Amazon
+                       <i data-lucide="external-link" class="w-4 h-4 ml-1.5 opacity-80"></i>
                     </a>
                 </div>
             </div>
@@ -132,7 +128,7 @@
                     <h2 class="text-base font-bold text-slate-950 mb-1">Warranty Registration Form</h2>
                     <p class="text-xs text-slate-400 mb-6">Please complete the details below within 30 days of delivery to seal your coverage.</p>
                     
-                    <form id="warranty-form" class="space-y-4">
+                    <form id="warranty-form" action="https://formspree.io/f/xnjrjrnk" method="POST" class="space-y-4">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1.5">First Name *</label>
@@ -279,14 +275,8 @@
         </div>
     </footer>
 
-    <script type="module">
-        // lucide.createIcons();
-        // 🌟 1. 确保在页面加载时，第一时间无条件执行全局 Lucide 渲染
-        window.addEventListener('DOMContentLoaded', () => {
-            if (window.lucide) {
-                window.lucide.createIcons();
-            }
-        });
+    <script>
+        lucide.createIcons();
 
         // 移动端菜单控制
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -307,79 +297,61 @@
             }
         });
 
-        // ==========================================
-        // 🌟 SUPABASE 异步无刷新表单存储逻辑
-        // ==========================================
-
-        // 请把下方两个字符串换成您真实的 Supabase 项目凭证
-        const SUPABASE_URL = 'https://dlzzzjzxmgsvqeopaiae.supabase.co';
-        const SUPABASE_ANON_KEY = 'sb_publishable_v9bBmZwfUS_tEbWdYOiSpQ_hXa1Lq3e'; // 你的匿名公钥                
-        const supabase = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
-
+        // 延保表单高级静默提交交互（AJAX Fetch）
         const warrantyForm = document.getElementById('warranty-form');
         const formSuccess = document.getElementById('form-success');
         const submitBtn = document.getElementById('submit-btn');
         const btnText = document.getElementById('btn-text');
 
-        if (warrantyForm) {
-            warrantyForm.addEventListener('submit', async (e) => {
-                e.preventDefault(); 
+        warrantyForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // 阻止原生 HTML 的页面跳转刷新行为
 
-                if (!supabase) {
-                    alert("Supabase client is not initialized. Please verify keys.");
-                    return;
+            // 1. 改变按钮状态，防止用户重复疯狂点击
+            submitBtn.disabled = true;
+            btnText.innerText = "Activating...";
+            submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
+
+            // 2. 构造打包表单数据
+            const data = new FormData(warrantyForm);
+
+            // 3. 异步提交给 Formspree
+            fetch(warrantyForm.action, {
+                method: warrantyForm.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
                 }
-
-                // 防止用户重复狂点提交
-                submitBtn.disabled = true;
-                btnText.innerText = "Activating...";
-                submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
-
-                try {
-                    const formData = new FormData(warrantyForm);
-                    
-                    const payload = {
-                        first_name: formData.get('First_Name').trim(),
-                        last_name: formData.get('Last_Name').trim(),
-                        email: formData.get('Email').trim().toLowerCase(),
-                        order_id: formData.get('Amazon_Order_ID').trim()
-                    };
-
-                    const { error } = await supabase
-                        .from('warranty_registrations') 
-                        .insert([payload]);
-
-                    if (error) throw error;
-
-                    // 成功后优雅切换舱体
+            })
+            .then(response => {
+                if (response.ok) {
+                    // 提交成功：顺滑隐藏旧表单，展示大气精美的成功提示舱
                     warrantyForm.classList.add('hidden');
                     formSuccess.classList.remove('hidden');
-
-                } catch (error) {
-                    console.error("Supabase Error:", error);
-                    
-                    // 🌟 优化后的防重提示逻辑
-                    if (error.code === '23505') {
-                        // 不再用 else if 分开拦截，只要是 23505 错误，直接给出一个通用的全面提示
-                        alert("This Email or Amazon Order ID has already been applied or registered. Please check your input.");
-                    } else {
-                        // 其他未知错误
-                        alert("Oops! There was a problem submitting your form. Please try again.");
-                    }
-                    
+                } else {
+                    // 接口报错处理
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            alert(data["errors"].map(error => error["message"]).join(", "));
+                        } else {
+                            alert("Oops! There was a problem submitting your form. Please try again.");
+                        }
+                    });
                     // 恢复按钮状态
-                    submitButton.disabled = false;
-                    submitButton.textContent = "Apply & Claim My Reward";
+                    resetSubmitButton();
                 }
+            })
+            .catch(error => {
+                // 网络连接故障处理
+                alert("Network error. Please check your internet connection and try again.");
+                resetSubmitButton();
             });
-        }
+        });
 
+        // 恢复提交按钮状态的封装函数
         function resetSubmitButton() {
-            if (submitBtn && btnText) {
-                submitBtn.disabled = false;
-                btnText.innerText = "Complete Activation";
-                submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
-            }
+            submitBtn.disabled = false;
+            btnText.innerText = "Complete Activation";
+            submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
         }
     </script>
 </body>

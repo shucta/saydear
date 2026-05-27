@@ -107,7 +107,7 @@
             </div>
 
             <!-- 表单区域 -->
-            <form id="creator-form" class="space-y-4 pt-1">
+            <form id="creator-form" action="https://formspree.io/f/xnjrjrnk" method="POST" class="space-y-4 pt-1">
     
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div class="space-y-1.5">
@@ -163,24 +163,51 @@
         </p>
     </footer>
 
-    <script type="module">
-        // 1. 引入 Supabase SDK
-        import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
-
-        // 2. 初始化 Supabase 客户端（请替换为你自己的真实 URL 和 Anon Key）
-        const SUPABASE_URL = 'https://dlzzzjzxmgsvqeopaiae.supabase.co';
-        const SUPABASE_ANON_KEY = 'sb_publishable_v9bBmZwfUS_tEbWdYOiSpQ_hXa1Lq3e'; // 你的匿名公钥
-        const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
+    <script>
         // 📥 30款产品的说明书动态数据库清单
         const PRODUCT_DATABASE = {
-            "jt001": { name: "elegant jewelry holder (Model: SDJT001)", pdfUrl: "manuals/jt001-user-manual.pdf", hasVideo: false, videoUrl: "" },
-            "jt002": { name: "elegant jewelry holder (Model: SDJT002)", pdfUrl: "manuals/jt002-user-manual.pdf", hasVideo: false, videoUrl: "" },
-            "jt003": { name: "elegant jewelry holder (Model: SDJT003)", pdfUrl: "manuals/jt003-user-manual.pdf", hasVideo: false, videoUrl: "" },
-            "sc001": { name: "shower caddy (Model: SDSC001)", pdfUrl: "manuals/sc01-user-manual.pdf", hasVideo: false, videoUrl: "" },
-            "us001": { name: "under sink organizer (Model: SDUS001)", pdfUrl: "manuals/us001-user-manual.pdf", hasVideo: false, videoUrl: "" },
-            "us01v2": { name: "under sink organizer (Model: SDUS01V2)", pdfUrl: "manuals/us01v2-user-manual.pdf", hasVideo: false, videoUrl: "" },
-            "us002v": { name: "under sink organizer (Model: SDUS002V)", pdfUrl: "manuals/us002v-user-manual.pdf", hasVideo: false, videoUrl: "" }
+            "jt001": {
+                name: "elegant jewelry holder (Model: SDJT001)",
+                pdfUrl: "manuals/jt001-user-manual.pdf",
+                hasVideo: false,
+                videoUrl: ""
+            },
+            "jt002": {
+                name: "elegant jewelry holder (Model: SDJT002)",
+                pdfUrl: "manuals/jt002-user-manual.pdf",
+                hasVideo: false,
+                videoUrl: ""
+            },
+            "jt003": {
+                name: "elegant jewelry holder (Model: SDJT003)",
+                pdfUrl: "manuals/jt003-user-manual.pdf",
+                hasVideo: false,
+                videoUrl: ""
+            },
+            "sc001": {
+                name: "shower caddy (Model: SDSC001)",
+                pdfUrl: "manuals/sc01-user-manual.pdf",
+                hasVideo: false,
+                videoUrl: ""
+            },
+            "us001": {
+                name: "under sink organizer (Model: SDUS001)",
+                pdfUrl: "manuals/us001-user-manual.pdf",
+                hasVideo: false,
+                videoUrl: ""
+            },
+            "us01v2": {
+                name: "under sink organizer (Model: SDUS01V2)",
+                pdfUrl: "manuals/us01v2-user-manual.pdf",
+                hasVideo: false,
+                videoUrl: ""
+            },
+            "us002v": {
+                name: "under sink organizer (Model: SDUS002V)",
+                pdfUrl: "manuals/us002v-user-manual.pdf",
+                hasVideo: false,
+                videoUrl: ""
+            }
         };
 
         // 🔍 解析 URL 参数的核心函数
@@ -189,14 +216,19 @@
             return params.get('model') ? params.get('model').toLowerCase().trim() : null;
         }
 
-        // ⚡ 页面动态渲染器
+        // ⚡ 再次升级后的：页面动态渲染器（加入精准的错误/不存在提示）
         function renderPage() {
             const sku = getSkuFromUrl();
             const productTitleEl = document.getElementById('product-title');
             const mediaContainerEl = document.getElementById('media-container');
+
+            // 检查数据库中是否存在该 SKU
             let currentProduct = PRODUCT_DATABASE[sku];
 
             if (sku && currentProduct) {
+                /* ====================================================
+                   情况 A：扫码完全正确 -> 正常展示对应的产品说明书
+                   ==================================================== */
                 productTitleEl.textContent = `Installation Guide for ${currentProduct.name}`;
                 mediaContainerEl.innerHTML = ''; 
 
@@ -212,16 +244,34 @@
                         </div>
                     `;
                 } else {
+                    // 🌟 1. 判断是否为安卓系统
                     const isAndroid = /Android/i.test(navigator.userAgent);
+                    
+                    // 🌟 2. 严格生成无多余斜杠的、干净的完全绝对路径
                     const absolutePdfUrl = window.location.origin + '/' + currentProduct.pdfUrl; 
-                    let iframeSrc = isAndroid 
-                        ? `https://docs.google.com/gview?url=${encodeURIComponent(absolutePdfUrl)}&embedded=true`
-                        : `pdfjs/web/viewer.html?file=${encodeURIComponent(absolutePdfUrl)}`;
 
+                    // 🌟 3. 根据系统分流生成最合适的 iframeSrc 预览链接
+                    let iframeSrc = '';
+                    if (isAndroid) {
+                        // 🤖 安卓系统：使用 Google 官方的在线极简内嵌预览服务（通过标准的绝对路径传参）
+                        iframeSrc = `https://docs.google.com/gview?url=${encodeURIComponent(absolutePdfUrl)}&embedded=true`;
+                    } else {
+                        // 🍎 苹果/PC系统：使用本地部署的 PDF.js，同样严格传入标准的完全绝对路径并进行编码
+                        iframeSrc = `pdfjs/web/viewer.html?file=${encodeURIComponent(absolutePdfUrl)}`;
+                    }
+
+                    // 🌟 4. 渲染到页面（100% 完整保留底栏的“Open Fullscreen / Download”与“Change Model”按钮）
                     mediaContainerEl.innerHTML = `
                         <div class="w-full h-[380px] sm:h-[550px] rounded-lg overflow-hidden border border-slate-800 bg-slate-900 relative">
-                            <iframe class="w-full h-full" src="${iframeSrc}" frameborder="0" allowfullscreen webkitallowfullscreen></iframe>
+                            <iframe 
+                                class="w-full h-full" 
+                                src="${iframeSrc}" 
+                                frameborder="0"
+                                allowfullscreen
+                                webkitallowfullscreen>
+                            </iframe>
                         </div>
+                        
                         <div class="pt-3 w-full flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-slate-900 mt-2">
                             <a href="${currentProduct.pdfUrl}" target="_blank" class="text-xs text-brand-accent hover:underline inline-flex items-center gap-1 font-medium">
                                 📁 Open Fullscreen / Download PDF
@@ -233,33 +283,60 @@
                     `;
                 }       
 
+                // 绑定“返回重新选择”按钮的点击事件
                 document.getElementById('back-to-locator').addEventListener('click', function() {
+                    // 清除浏览器地址栏的 ?model= 参数
                     const newUrl = `${window.location.protocol}//${window.location.host}${window.location.pathname}`;
                     window.history.pushState({ path: newUrl }, '', newUrl);
+                    // 重新执行渲染，由于此时没有参数，会自然退回到下拉选择框界面
                     renderPage();
                 });
             } else {
+                /* ====================================================
+                   情况 B：核心升级！参数丢失、或者输入了错误/不存在的参数
+                   ==================================================== */
                 productTitleEl.textContent = `Find Your Saydear Product Manual`;
+                
+                // 动态构建下拉菜单选项
                 let optionsHtml = `<option value="" disabled selected>-- Select your product model --</option>`;
                 for (const key in PRODUCT_DATABASE) {
                     optionsHtml += `<option value="${key}">${PRODUCT_DATABASE[key].name}</option>`;
                 }
 
-                let errorNoticeHtml = sku
-                    ? `<div class="mb-4 px-4 py-2.5 bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs rounded-lg max-w-xs mx-auto font-medium">⚠️ Error: Model Code "${sku}" Not Found</div>
-                       <p class="text-xs text-slate-400 max-w-xs mx-auto">The code from your QR link seems incorrect. Don't worry! You can manually select your product from the list below.</p>`
-                    : `<p class="text-xs text-slate-500 max-w-xs mx-auto">Please select your product model from the list below to access your digital installation guide instantly.</p>`;
+                // 🌟 根据买家是“没输参数”还是“输错参数”，给出不同的文案提示
+                let errorNoticeHtml = "";
+                if (sku) {
+                    // 如果有参数，但数据库找不到（即买家输错了，或者拿到了印刷错误的卡片）
+                    errorNoticeHtml = `
+                        <div class="mb-4 px-4 py-2.5 bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs rounded-lg max-w-xs mx-auto font-medium">
+                            ⚠️ Error: Model Code "${sku}" Not Found
+                        </div>
+                        <p class="text-xs text-slate-400 max-w-xs mx-auto">The code from your QR link seems incorrect. Don't worry! You can manually select your product from the list below.</p>
+                    `;
+                } else {
+                    // 如果买家直接访问了页面，后面完全没有带 ?model= 参数
+                    errorNoticeHtml = `
+                        <p class="text-xs text-slate-500 max-w-xs mx-auto">Please select your product model from the list below to access your digital installation guide instantly.</p>
+                    `;
+                }
 
+                // 渲染最终的报错/选框界面
                 mediaContainerEl.innerHTML = `
                     <div class="p-4 bg-slate-900 rounded-full text-amber-500 text-xl mb-1">🔍</div>
-                    <div class="space-y-1 mb-3"><h3 class="text-sm font-semibold text-white">Manual Locator</h3>${errorNoticeHtml}</div>
+                    <div class="space-y-1 mb-3">
+                        <h3 class="text-sm font-semibold text-white">Manual Locator</h3>
+                        ${errorNoticeHtml}
+                    </div>
+                    
                     <div class="w-full max-w-xs mx-auto pt-1">
-                        <select id="manual-manual-selector" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2.5 text-xs text-white focus:outline-none focus:border-brand-accent transition-colors">
+                        <select id="manual-manual-selector" 
+                                class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2.5 text-xs text-white focus:outline-none focus:border-brand-accent transition-colors">
                             ${optionsHtml}
                         </select>
                     </div>
                 `;
 
+                // 绑定选择改变事件
                 document.getElementById('manual-manual-selector').addEventListener('change', function() {
                     const selectedSku = this.value;
                     const newUrl = `${window.location.protocol}//${window.location.host}${window.location.pathname}?model=${selectedSku}`;
@@ -269,55 +346,30 @@
             }
         }
 
-        // 📮 处理表单提交逻辑 (完美对接 Supabase 并保持无刷新成功提示)
-        document.getElementById('creator-form').addEventListener('submit', async function(e) {
+        // 📮 处理表单提交逻辑 (完美对接 Formspree 并实现无刷新成功提示)
+        document.getElementById('creator-form').addEventListener('submit', function(e) {
             e.preventDefault(); 
             
             const form = this;
+            const data = new FormData(form);
             const successEl = document.getElementById('form-success');
-            const submitButton = form.querySelector('button[type="submit"]');
             
-            // 禁用按钮防止重复点击
-            submitButton.disabled = true;
-            submitButton.textContent = "Submitting...";
-
-            // 提取表单数据
-            const formData = new FormData(form);
-            const payload = {
-                first_name: formData.get('first_name'),
-                last_name: formData.get('last_name'),
-                order_id: formData.get('order_id'),
-                email: formData.get('email'),
-                shared_proof: formData.get('shared_proof')
-            };
-
-            try {
-                // 使用 Supabase 客户端直接向数据库插入数据
-                const { error } = await supabase
-                    .from('influencers_claims')
-                    .insert([payload]);
-
-                if (error) throw error;
-
-                // 成功：隐藏表单，展示成功文案（与原体验一致）
-                form.classList.add('hidden');
-                successEl.classList.remove('hidden');
-            } catch (error) {
-                console.error("Supabase Error:", error);
-                
-                // 🌟 优化后的防重提示逻辑
-                if (error.code === '23505') {
-                    // 不再用 else if 分开拦截，只要是 23505 错误，直接给出一个通用的全面提示
-                    alert("This Email or Amazon Order ID has already been applied or registered. Please check your input.");
+            fetch(form.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    form.classList.add('hidden');
+                    successEl.classList.remove('hidden');
                 } else {
-                    // 其他未知错误
                     alert("Oops! There was a problem submitting your form. Please try again.");
                 }
-                
-                // 恢复按钮状态
-                submitButton.disabled = false;
-                submitButton.textContent = "Apply & Claim My Reward";
-            }
+            }).catch(error => {
+                alert("Network error. Please review your connection and try again.");
+            });
         });
 
         // 执行初始化渲染
